@@ -710,6 +710,21 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
   .char-card.pose-card::after,.hero-card .char-card::after{opacity:1;transform:none;font-size:6.5px;right:7px;bottom:7px}
 }
 
+/* ---------- Japanese anime character key visuals ---------- */
+[data-char]{--anime-x:0%;--anime-y:0%}
+[data-char="warrior"]{--anime-x:0%;--anime-y:0%}[data-char="mage"]{--anime-x:25%;--anime-y:0%}[data-char="witch"]{--anime-x:50%;--anime-y:0%}[data-char="elf"]{--anime-x:75%;--anime-y:0%}[data-char="rogue"]{--anime-x:100%;--anime-y:0%}
+[data-char="paladin"]{--anime-x:0%;--anime-y:33.333%}[data-char="druid"]{--anime-x:25%;--anime-y:33.333%}[data-char="bard"]{--anime-x:50%;--anime-y:33.333%}[data-char="ranger"]{--anime-x:75%;--anime-y:33.333%}[data-char="necromancer"]{--anime-x:100%;--anime-y:33.333%}
+[data-char="sword"]{--anime-x:0%;--anime-y:66.666%}[data-char="boxer"]{--anime-x:25%;--anime-y:66.666%}[data-char="talisman"]{--anime-x:50%;--anime-y:66.666%}[data-char="alchemist"]{--anime-x:75%;--anime-y:66.666%}[data-char="tamer"]{--anime-x:100%;--anime-y:66.666%}
+[data-char="puppeteer"]{--anime-x:0%;--anime-y:100%}[data-char="zither"]{--anime-x:25%;--anime-y:100%}[data-char="painter"]{--anime-x:50%;--anime-y:100%}[data-char="mechanist"]{--anime-x:75%;--anime-y:100%}[data-char="merchant"]{--anime-x:100%;--anime-y:100%}
+.char-card[data-char] .cg-art::before,.poster[data-char] .poster-art::before,.variant-stage[data-char] .vs-art::before,.second-card[data-char] .second-art::before{content:"";position:absolute;inset:0;z-index:2;background-image:linear-gradient(180deg,transparent 62%,rgba(9,7,15,.36)),url("assets/anime-character-atlas-v1.png");background-size:auto 400%;background-position:var(--anime-x) var(--anime-y);background-repeat:no-repeat;filter:saturate(1.08) contrast(1.03);transform:scale(1.035);transform-origin:50% 60%;transition:transform .62s cubic-bezier(.2,.85,.2,1),filter .45s}
+.char-card[data-char] .cg-art svg,.poster[data-char] .art-svg,.variant-stage[data-char] .vs-art svg,.second-card[data-char] .second-art svg{opacity:0}
+.char-card[data-char] .cg-art::after,.poster[data-char] .poster-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.16),transparent 28%,transparent 70%,rgba(7,4,18,.28));mix-blend-mode:screen}
+.char-card[data-char].pose-1 .cg-art::before{transform:translate3d(-3%,1%,0) scale(1.09) rotate(-1.4deg)}
+.char-card[data-char].pose-2 .cg-art::before{transform:translate3d(3%,-1%,0) scale(1.075) rotate(1.4deg)}
+.poster[data-char] .poster-art.pose-1::before{transform:translate3d(-3%,1%,0) scale(1.08) rotate(-1.2deg)}
+.poster[data-char] .poster-art.pose-2::before{transform:translate3d(3%,-1%,0) scale(1.065) rotate(1.2deg)}
+.char-card[data-char].pose-shift .cg-art::before,.poster[data-char] .poster-art.pose-shift::before{filter:saturate(1.25) brightness(1.18) drop-shadow(0 0 20px var(--el))}
+
 /* ---------- share poster modal ---------- */
 .share-modal[hidden]{display:none!important}
 .share-modal{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:24px}
@@ -817,9 +832,9 @@ body.share-open{overflow:hidden}
           <div class="hero-orbit"></div>
           <div class="hero-rune r1">十二刻度 · 六十相</div>
           <div class="hero-rune r2">以行观心 · 以相见道</div>
-          <div class="hero-card c2"><div class="char-card" data-el="moon"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
-          <div class="hero-card c1"><div class="char-card" data-el="thunder"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
-          <div class="hero-card c3"><div class="char-card" data-el="light"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
+          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
+          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
+          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
         </div>
       </div>
     </div>
@@ -3168,7 +3183,7 @@ SPRITE_PARTS.push(`
       const pills = keys.map(k => `${ELEMENTS[k].n} ${c.variants[k].name.replace(c.name, '') || c.variants[k].name}`).join('');
       return `
         <div class="gallery-item" data-group="${group}">
-          <button class="char-card pose-card" type="button" data-el="${mainKey}" aria-label="${c.name}，点击切换动作姿势">
+          <button class="char-card pose-card" type="button" data-el="${mainKey}" data-char="${c.id}" aria-label="${c.name}，点击切换动作姿势">
             <div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div>
             <div class="cg-label"><i></i>${group === 'west' ? '西境' : '东洲'} · ${mainEl.n}相</div>
             <div class="cg-role">${c.role.split(' / ')[0]}</div>
@@ -3404,7 +3419,9 @@ SPRITE_PARTS.push(`
     // theme
     $('#screen-result').dataset.el = v.key;
     $('#poster').dataset.el = v.key;
+    $('#poster').dataset.char = c.id;
     $('#variantStage').dataset.el = v.key;
+    $('#variantStage').dataset.char = c.id;
 
     // poster identity
     $('#resNo').textContent = `NO. ${String(roleIndex).padStart(2, '0')}`;
@@ -3459,6 +3476,7 @@ SPRITE_PARTS.push(`
     const sv = r.secondVariant;
     const sel = sv.el;
     $('#secondCard').dataset.el = sv.key;
+    $('#secondCard').dataset.char = sc.id;
     $('#secondGlyph').textContent = CLASS_GLYPHS[sc.id] || sc.name[0];
     $('#secondArtUse').setAttribute('href', `#ch-${sc.id}`);
     $('#secondName').innerHTML = `${sv.data.name} <span>${sel.en} ${sc.en}</span>`;
@@ -3499,6 +3517,7 @@ SPRITE_PARTS.push(`
     const e = ELEMENTS[key];
     const vd = c.variants[key];
     $('#variantStage').dataset.el = key;
+    $('#variantStage').dataset.char = c.id;
     $('#vsGlyph').textContent = e.n;
     $('#vsTag').textContent = `ELEMENT · ${e.en}`;
     $('#vsName').textContent = vd.name;
