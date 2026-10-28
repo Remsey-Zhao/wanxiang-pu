@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>万相谱 · 本命道途｜你是哪一种幻想角色？</title>
-<meta name="description" content="20 个情境，12 条风格维度，16 种幻想职阶 × 3 种元素相，共 48 种角色。测出你的做事风格本命，生成一张属于你的幻想角色海报。">
+<meta name="description" content="25 个情境，12 条风格维度，20 种幻想职阶 × 3 种元素相，共 60 种角色。测出你的做事风格本命，生成一张属于你的幻想角色海报。">
 <meta name="theme-color" content="#0b0a12">
 <link rel="canonical" href="https://remsey-zhao.github.io/wanxiang-pu/">
 <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="万相谱 · 本命道途">
 <meta property="og:url" content="https://remsey-zhao.github.io/wanxiang-pu/">
 <meta property="og:title" content="万相谱 · 本命道途｜你是哪一种幻想角色？">
-<meta property="og:description" content="20 个情境，12 条风格维度，48 种幻想角色。用 3 分钟，测出你以何种方式入世。">
+<meta property="og:description" content="25 个情境，12 条风格维度，60 种幻想角色。用 4 分钟，测出你以何种方式入世。">
 <meta property="og:image" content="https://remsey-zhao.github.io/wanxiang-pu/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="万相谱 · 本命道途：你以何种方式入世？">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="万相谱 · 本命道途｜你是哪一种幻想角色？">
-<meta name="twitter:description" content="20 个情境，12 条风格维度，48 种幻想角色。用 3 分钟，测出你以何种方式入世。">
+<meta name="twitter:description" content="25 个情境，12 条风格维度，60 种幻想角色。用 4 分钟，测出你以何种方式入世。">
 <meta name="twitter:image" content="https://remsey-zhao.github.io/wanxiang-pu/og.png">
 <meta name="twitter:image:alt" content="万相谱 · 本命道途：你以何种方式入世？">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a12'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23d8b56a' stroke-width='2'/%3E%3Cpath d='M32 15 L37 32 L32 49 L27 32 Z' fill='%23d8b56a'/%3E%3C/svg%3E">
@@ -122,6 +122,16 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
 .section-head p{max-width:480px;color:var(--muted);font-size:14px;line-height:1.8}
 .section-num{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
 @media(max-width:780px){.section{padding:64px 0}.section-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:26px}}
+
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .result-footnote,.result-block,.result-closing{opacity:1!important;transform:none!important}
+  .poster-art .art-svg,.poster-art .art-ring,.poster-art .art-halo{transform:none!important}
+  .poster-sheen,.art-motes{display:none!important}
+  #poster.revealed,#poster.revealed .poster-main > *{animation:none!important;opacity:1!important}
+}
 
 </style>
 <style>
@@ -567,7 +577,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
 @media(max-width:700px){.result-closing{flex-direction:column;align-items:flex-start;padding:24px 22px}.result-closing .btn{width:100%}}
 
 /* ---------- toast ---------- */
-.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);z-index:200;padding:11px 20px;border:1px solid rgba(216,181,106,.4);border-radius:999px;background:rgba(21,17,31,.95);backdrop-filter:blur(12px);font-size:11.5px;color:var(--ivory);letter-spacing:.04em;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 18px 40px -20px #000}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);z-index:400;padding:11px 20px;border:1px solid rgba(216,181,106,.4);border-radius:999px;background:rgba(21,17,31,.95);backdrop-filter:blur(12px);font-size:11.5px;color:var(--ivory);letter-spacing:.04em;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 18px 40px -20px #000}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
 /* ---------- responsive poster ---------- */
@@ -629,11 +639,99 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
   .second-art{width:92px;height:132px}
 }
 
+
+/* ---------- poster motion / reveals ---------- */
+#poster.revealed{animation:posterIn .95s cubic-bezier(.2,.8,.2,1) both}
+@keyframes posterIn{from{opacity:0;transform:translateY(26px) scale(.985);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+#poster.revealed .poster-main > *{animation:titleRise .72s cubic-bezier(.2,.8,.2,1) both}
+#poster.revealed .poster-main > *:nth-child(1){animation-delay:.16s}
+#poster.revealed .poster-main > *:nth-child(2){animation-delay:.2s}
+#poster.revealed .poster-main > *:nth-child(3){animation-delay:.24s}
+#poster.revealed .poster-main > *:nth-child(4){animation-delay:.28s}
+#poster.revealed .poster-main > *:nth-child(5){animation-delay:.32s}
+#poster.revealed .poster-main > *:nth-child(6){animation-delay:.36s}
+#poster.revealed .poster-main > *:nth-child(7){animation-delay:.4s}
+#poster.revealed .poster-main > *:nth-child(8){animation-delay:.44s}
+@keyframes titleRise{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+#poster.revealed .poster-art .art-svg{animation:artReveal 1.1s .08s cubic-bezier(.2,.8,.2,1) both}
+@keyframes artReveal{from{opacity:0;translate:0 26px;scale:.955}to{opacity:1;translate:0 0;scale:1}}
+#poster.revealed .poster-art .art-glyph{animation:glyphReveal 1.3s .12s both}
+@keyframes glyphReveal{from{opacity:0;scale:.9}to{opacity:.055;scale:1}}
+#poster.revealed .poster-facts div{animation:titleRise .6s .55s both}
+#poster.revealed .poster-facts div:nth-child(2){animation-delay:.6s}
+#poster.revealed .poster-facts div:nth-child(3){animation-delay:.65s}
+#poster.revealed .poster-facts div:nth-child(4){animation-delay:.7s}
+#poster.revealed .poster-seal{animation:sealIn .7s .8s both}
+@keyframes sealIn{from{opacity:0;transform:rotate(11deg) scale(.8)}to{opacity:.62;transform:rotate(4deg) scale(1)}}
+.poster-sheen{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:0;background:linear-gradient(104deg,transparent 36%,rgba(255,255,255,.09) 47%,rgba(255,255,255,.015) 54%,transparent 64%);mix-blend-mode:screen}
+#poster.revealed .poster-sheen{animation:posterSheen 2.1s .5s cubic-bezier(.3,.7,.2,1) both}
+@keyframes posterSheen{0%{opacity:0;transform:translateX(-130%)}18%{opacity:1}62%{opacity:.35}100%{opacity:0;transform:translateX(135%)}}
+.poster-art .art-svg{transform:translate3d(calc(var(--px,0) * 11px),calc(var(--py,0) * 9px),0) scale(1.012);transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.poster.tilting .poster-art .art-svg{transition-duration:.14s}
+.poster-art .art-ring.r1,.poster-art .art-ring.r2,.poster-art .art-halo{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.poster.tilting .poster-art .art-ring.r1{transform:translate(-50%,-50%) translate(calc(var(--px,0) * -7px),calc(var(--py,0) * -5px))}
+.poster.tilting .poster-art .art-ring.r2{transform:translate(-50%,-50%) translate(calc(var(--px,0) * -12px),calc(var(--py,0) * -8px))}
+.poster.tilting .poster-art .art-halo{transform:translate(-50%,-50%) translate(calc(var(--px,0) * -4px),calc(var(--py,0) * -3px))}
+.art-motes{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.art-motes span{position:absolute;left:var(--mx);top:var(--my);width:var(--ms);height:var(--ms);border-radius:50%;background:var(--el);box-shadow:0 0 9px var(--el);opacity:0;animation:moteFloat var(--md) var(--mdl) ease-in-out infinite}
+@keyframes moteFloat{0%,100%{opacity:0;transform:translate3d(0,10px,0) scale(.4)}35%{opacity:.85;transform:translate3d(4px,-12px,0) scale(1)}70%{opacity:.2;transform:translate3d(-3px,-28px,0) scale(.7)}}
+
+.result-footnote,.result-block,.result-closing{opacity:0;transform:translateY(22px);transition:opacity .72s cubic-bezier(.2,.8,.2,1) var(--in-delay,0ms),transform .72s cubic-bezier(.2,.8,.2,1) var(--in-delay,0ms)}
+.result-footnote.in,.result-block.in,.result-closing.in{opacity:1;transform:none}
+.variant-stage.swap .vs-art svg{animation:vsArtIn .55s cubic-bezier(.2,.8,.2,1) both}
+.variant-stage.swap .vs-copy > *{animation:vsTextIn .55s cubic-bezier(.2,.8,.2,1) both}
+.variant-stage.swap .vs-copy > *:nth-child(2){animation-delay:.04s}
+.variant-stage.swap .vs-copy > *:nth-child(3){animation-delay:.08s}
+.variant-stage.swap .vs-copy > *:nth-child(4){animation-delay:.12s}
+.variant-stage.swap .vs-copy > *:nth-child(5){animation-delay:.16s}
+@keyframes vsArtIn{from{opacity:0;scale:.96;translate:0 10px}to{opacity:1;scale:1;translate:0 0}}
+@keyframes vsTextIn{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+
+/* ---------- share poster modal ---------- */
+.share-modal[hidden]{display:none!important}
+.share-modal{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:24px}
+.share-backdrop{position:absolute;inset:0;background:rgba(5,4,9,.87);backdrop-filter:blur(12px);animation:shareFade .35s both}
+@keyframes shareFade{from{opacity:0}to{opacity:1}}
+.share-dialog{position:relative;width:min(1040px,100%);max-height:calc(100vh - 40px);display:flex;flex-direction:column;border:1px solid rgba(216,181,106,.34);border-radius:18px;background:linear-gradient(160deg,#171120,#0a0810);box-shadow:0 60px 140px -40px #000,inset 0 0 0 1px rgba(255,255,255,.03);overflow:hidden;animation:shareUp .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes shareUp{from{opacity:0;transform:translateY(26px) scale(.985)}to{opacity:1;transform:none}}
+.share-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 24px;border-bottom:1px solid rgba(216,181,106,.16);flex-shrink:0}
+.share-head .k{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.2em;color:var(--gold);opacity:.8}
+.share-head h2{font-size:22px;margin-top:4px}
+.share-close{width:38px;height:38px;border:1px solid rgba(216,181,106,.26);border-radius:50%;color:var(--muted);font-size:22px;line-height:1;display:grid;place-items:center;transition:.2s;flex-shrink:0}
+.share-close:hover{border-color:var(--gold);color:var(--gold-2);background:rgba(216,181,106,.08);transform:rotate(90deg)}
+.share-body{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:24px;padding:22px 24px 24px;overflow:auto;min-height:0}
+.share-preview{position:relative;display:grid;place-items:center;min-height:320px;border:1px solid rgba(216,181,106,.18);border-radius:8px;background:
+  radial-gradient(70% 70% at 50% 40%,rgba(139,92,246,.09),transparent 72%),#08070d;overflow:hidden}
+.share-preview img{display:block;width:auto;max-width:100%;max-height:calc(100vh - 190px);object-fit:contain;margin:auto}
+.share-loading{display:flex;flex-direction:column;align-items:center;gap:16px;padding:60px 20px;color:var(--muted);font-size:12px;letter-spacing:.06em}
+.share-loading i{width:44px;height:44px;border:1px solid rgba(216,181,106,.24);border-top-color:var(--gold);border-radius:50%;animation:spinSlow 1.1s linear infinite}
+.share-fallback{max-width:90%;margin:0 auto;padding:0 10px 14px;font-size:10px;line-height:1.7;color:var(--faint);text-align:center}
+.share-side{display:flex;flex-direction:column;gap:9px;min-width:0}
+.share-lead{margin:2px 0 8px;font-size:12px;line-height:1.85;color:var(--muted)}
+.share-side .btn{width:100%;height:44px;font-size:12px;padding:0 16px;justify-content:space-between}
+.share-side .btn .ico{opacity:.7}
+.share-side .btn-primary{justify-content:center}
+.share-side .btn:disabled{opacity:.55;cursor:progress;transform:none}
+.share-note{margin-top:auto;padding-top:12px;border-top:1px solid rgba(216,181,106,.12);font-size:10px;line-height:1.75;color:var(--faint)}
+body.share-open{overflow:hidden}
+@media(max-width:840px){
+  .share-modal{padding:10px}
+  .share-dialog{max-height:calc(100vh - 20px)}
+  .share-body{grid-template-columns:1fr;gap:14px;padding:14px}
+  .share-preview{min-height:0}
+  .share-preview img{max-height:48vh}
+  .share-side{gap:8px}
+  .share-lead{display:none}
+  .share-note{padding-top:8px}
+  .share-head{padding:13px 16px}
+  .share-head h2{font-size:18px}
+}
+
 /* ---------- print poster ---------- */
 @media print{
   @page{size:A4 landscape;margin:8mm}
   body{background:#0b0a12!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  body::before,body::after,.result-bg,.result-head,.result-actions,.result-block,.result-closing,.result-footnote,.site-head,.toast,#screen-intro,#screen-quiz{display:none!important}
+  body::before,body::after,.result-bg,.result-head,.result-actions,.result-block,.result-closing,.result-footnote,.site-head,.toast,.share-modal,#screen-intro,#screen-quiz{display:none!important}
   #screen-result{display:block!important;padding:0}
   .result-shell{width:100%}
   .poster{display:flex;flex-direction:column;width:100%;height:192mm;break-inside:avoid;box-shadow:none;border-color:rgba(216,181,106,.5)}
@@ -663,7 +761,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
     </a>
     <nav class="head-nav" aria-label="页面导航">
       <a href="#dims">十二刻度</a>
-      <a href="#roster">四十八相</a>
+      <a href="#roster">六十相</a>
       <a href="#how">如何观照</a>
     </nav>
     <button class="head-cta" data-start>开始问道 <span aria-hidden="true">→</span></button>
@@ -679,12 +777,12 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
         <div class="hero-copy">
           <div class="kicker">万相谱 · 本命道途 / STYLE ORACLE</div>
           <h1>你以何种方式<br><span class="mark">入世</span>？</h1>
-          <p class="lede">这不是性格好坏测试，而是<strong>做事风格</strong>的观照。二十个情境，十二道刻度，四十八种幻想角色——看看你的本命，落在哪一条道途上。</p>
+          <p class="lede">这不是性格好坏测试，而是<strong>做事风格</strong>的观照。二十五个情境，十二道刻度，六十种幻想角色——看看你的本命，落在哪一条道途上。</p>
           <div class="hero-meta">
-            <div><strong>20</strong><span>情境</span></div>
+            <div><strong>25</strong><span>情境</span></div>
             <div><strong>12</strong><span>维度</span></div>
-            <div><strong>48</strong><span>角色</span></div>
-            <div><strong>3</strong><span>分钟</span></div>
+            <div><strong>60</strong><span>角色</span></div>
+            <div><strong>4</strong><span>分钟</span></div>
           </div>
           <div class="hero-actions">
             <button class="btn btn-primary" data-start>开始问道 <span class="arrow">→</span></button>
@@ -694,7 +792,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="hero-orbit"></div>
-          <div class="hero-rune r1">十二刻度 · 四十八相</div>
+          <div class="hero-rune r1">十二刻度 · 六十相</div>
           <div class="hero-rune r2">以行观心 · 以相见道</div>
           <div class="hero-card c2"><div class="char-card" data-el="moon"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
           <div class="hero-card c1"><div class="char-card" data-el="thunder"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
@@ -705,9 +803,9 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
 
     <div class="stat-strip" aria-label="测试数据">
       <div class="stat-in">
-        <div class="stat"><b>20</b><span>个真实工作情境</span></div>
+        <div class="stat"><b>25</b><span>个真实工作情境</span></div>
         <div class="stat"><b>12</b><span>条风格维度</span></div>
-        <div class="stat"><b>16 × 3</b><span>职阶 × 元素相</span></div>
+        <div class="stat"><b>20 × 3</b><span>职阶 × 元素相</span></div>
         <div class="stat"><b>1</b><span>张专属本命海报</span></div>
       </div>
     </div>
@@ -730,7 +828,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
         <div class="section-head">
           <div>
             <div class="section-num">02 / THE ROSTER</div>
-            <h2>四十八相 · 角色群像</h2>
+            <h2>六十相 · 角色群像</h2>
           </div>
           <div class="gallery-tools" id="galleryTools">
             <button class="filter-btn on" data-filter="all" aria-pressed="true">全部</button>
@@ -752,7 +850,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
           <p>把它当成一面镜子，而不是一张判决书。你随时可以走向另一条道途。</p>
         </div>
         <div class="how-grid">
-          <div class="how-card"><span class="num">一</span><h3>凭第一反应作答</h3><p>二十个情境没有标准答案。不要计算“应该选什么”，选那个最像你最近半年真实做法的。</p></div>
+          <div class="how-card"><span class="num">一</span><h3>凭第一反应作答</h3><p>二十五个情境没有标准答案。不要计算“应该选什么”，选那个最像你最近半年真实做法的。</p></div>
           <div class="how-card"><span class="num">二</span><h3>看结构与倾向</h3><p>结果由十二维度的相对高低决定。重点是你在哪些刻度上突出，而不是总分有多高。</p></div>
           <div class="how-card"><span class="num">三</span><h3>三相皆是同一个人</h3><p>每个职阶有三种元素相。它们不是三种人，而是你在不同处境里会显化的三张面孔。</p></div>
         </div>
@@ -765,7 +863,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
         <div class="foot-in">
           <div class="foot-brand">
             <b>万相谱</b>
-            <p>一份关于做事风格的幻想角色图鉴。二十问，十二维，四十八相。愿你在故事里，看见自己惯用的那一种力道。</p>
+            <p>一份关于做事风格的幻想角色图鉴。二十五问，十二维，六十相。愿你在故事里，看见自己惯用的那一种力道。</p>
           </div>
           <div class="foot-links">
             <div><span>EXPLORE</span><a href="#dims">十二刻度</a><a href="#roster">角色群像</a></div>
@@ -786,8 +884,8 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
     <div class="quiz-shell">
       <div class="quiz-top">
         <button class="quiz-back" id="quizExit"><span aria-hidden="true">←</span> 退出</button>
-        <div class="quiz-track" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0" id="quizTrack"><i id="quizBar"></i></div>
-        <span class="quiz-count" id="quizCount">01 / 20</span>
+        <div class="quiz-track" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0" id="quizTrack"><i id="quizBar"></i></div>
+        <span class="quiz-count" id="quizCount">01 / 25</span>
       </div>
       <div id="quizBody"></div>
     </div>
@@ -804,13 +902,14 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
         </a>
         <div class="result-actions">
           <button class="btn btn-ghost" id="btnCopy" aria-label="复制结果链接"><span class="ico" aria-hidden="true">⧉</span><span class="lbl">复制结果链接</span></button>
-          <button class="btn btn-ghost" id="btnPrint" aria-label="打印或保存海报"><span class="ico" aria-hidden="true">↓</span><span class="lbl">保存海报</span></button>
+          <button class="btn btn-ghost" id="btnPoster" aria-label="生成分享海报"><span class="ico" aria-hidden="true">▣</span><span class="lbl">生成海报</span></button>
           <button class="btn btn-primary" id="btnRetake" aria-label="重新问道"><span class="ico" aria-hidden="true">↻</span><span class="lbl">重新问道</span></button>
         </div>
       </div>
 
       <article class="poster" id="poster" data-el="thunder" aria-label="本命角色海报">
         <span class="poster-corner tl"></span><span class="poster-corner tr"></span><span class="poster-corner bl"></span><span class="poster-corner br"></span>
+        <span class="poster-sheen" aria-hidden="true"></span>
         <div class="poster-grid">
           <div class="poster-main">
             <div class="poster-kicker">万相谱 · 本命道途 / ORACLE OF STYLES</div>
@@ -827,6 +926,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
             <div class="art-glyph" id="resGlyph">剑</div>
             <div class="art-halo"></div>
             <div class="art-stars"></div>
+            <div class="art-motes" id="artMotes" aria-hidden="true"></div>
             <div class="art-ring r1"></div><div class="art-ring r2"></div>
             <span class="art-rune left">本命道途 · 以行观心</span>
             <span class="art-rune right">十二刻度 · 三相显化</span>
@@ -842,11 +942,11 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
           <div><span>兵刃 / WEAPON</span><b id="resWeapon">长剑</b></div>
           <div><span>信物 / RELIC</span><b id="resRelic">磨剑石</b></div>
         </div>
-        <div class="poster-foot"><span>WANXIANG PU · STYLE ORACLE</span><b>自测结果 · 仅供观照</b><span id="resFootNo">NO. 09 / 48</span></div>
+        <div class="poster-foot"><span>WANXIANG PU · STYLE ORACLE</span><b>自测结果 · 仅供观照</b><span id="resFootNo">NO. 09 / 60</span></div>
       </article>
 
       <div class="result-footnote">
-        <span>结果由 20 次选择与 12 条风格维度共同生成。分享链接只包含答案序号，不包含任何个人信息。</span>
+        <span>结果由 25 次选择与 12 条风格维度共同生成。分享链接只包含答案序号，不包含任何个人信息。</span>
         <span class="seal">SEALED · 万相谱 · 本命道途</span>
       </div>
 
@@ -938,9 +1038,30 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
 
       <div class="result-closing">
         <p>道途不是牢笼。你随时可以拿起另一种武器，走向另一条路。<span>把这张海报发给朋友，看看他们的本命是什么。</span></p>
-        <button class="btn btn-primary" id="btnShare">分享我的本命 <span class="arrow">→</span></button>
+        <button class="btn btn-primary" id="btnShare">生成分享海报 <span class="arrow">→</span></button>
       </div>
     </div>
+
+    <div class="share-modal" id="shareModal" hidden aria-hidden="true">
+      <div class="share-backdrop" data-close-share></div>
+      <div class="share-dialog" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+        <div class="share-head">
+          <div><span class="k">SHARE POSTER · 1080 × 1440</span><h2 id="shareTitle">你的本命海报</h2></div>
+          <button class="share-close" id="shareClose" aria-label="关闭海报预览">×</button>
+        </div>
+        <div class="share-body">
+          <div class="share-preview" id="sharePreview"><div class="share-loading"><i></i><span>正在绘制你的命盘…</span></div></div>
+          <div class="share-side">
+            <p class="share-lead">一张可以直接发给朋友的高清角色海报。图里包含你的本命职阶、元素相、十二刻度，以及本命批注。</p>
+            <button class="btn btn-primary share-download" id="btnDownloadPoster" disabled>下载高清 PNG <span class="arrow">↓</span></button>
+            <button class="btn btn-ghost" id="btnShareCopy">复制结果链接 <span class="ico">⧉</span></button>
+            <button class="btn btn-ghost" id="btnSharePrint">打印 / 存为 PDF <span class="ico">↗</span></button>
+            <p class="share-note">海报在本地生成，不会上传任何作答数据。若下载没有反应，可长按图片保存。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </section>
 </main>
@@ -1107,6 +1228,38 @@ const CLASSES_A = [
       wind:{name:'风谣诗人',line:'让信息像风一样传开。'}
     },
     gallery:'把复杂的事，讲成人们愿意相信的故事。'
+  },
+  {
+    id:'ranger', name:'游侠', en:'RANGER', sig:['grit','insight','intuition'],
+    role:'侦察 / 探路者', epithet:'在没有路的地方，先读出风的方向',
+    summary:'你对环境的变化很敏感：风向、地形、人的状态，都是你判断下一步的依据。你不急着给答案，而是先确认自己站在哪里、手上有什么。你相信好判断来自现场，不来自会议室。',
+    strengths:['现场感知强，能提前发现风险','资源利用灵活，擅长在限制里开路','耐得住长途，不靠一时爆发'],
+    blind:['对抽象推演和长会缺乏耐心','习惯自己扛，容易错过支援'],
+    team:'你是团队的侦察兵和先行者，适合做探索、冷启动、危机判断；但需要有人把你的发现整理成共识。',
+    growth:'把“我看到了”变成“我们怎么走”；在独自探路之外，留一条让别人跟上的路。',
+    weapon:'猎弓', relic:'旧铜罗盘', motto:'先看清地形，再决定脚步。',
+    variants:{
+      forest:{name:'林踪游侠',line:'像林子一样耐心，等猎物自己露出破绽。'},
+      wind:{name:'风迹游侠',line:'追着风走，比地图更早到达。'},
+      ice:{name:'霜原游侠',line:'在极冷的地方，保持最清醒的判断。'}
+    },
+    gallery:'先看清地形，再决定脚步。'
+  },
+  {
+    id:'necromancer', name:'死灵法师', en:'NECROMANCER', sig:['insight','solo','grit'],
+    role:'研究 / 禁忌学者', epithet:'在无人敢看的地方，点一盏灯',
+    summary:'你对被回避、被删掉、被说“不该问”的部分有天然的好奇。你愿意独自钻进一个冷门问题，直到看清它的骨架。你的冷静有时让人不安，但你只是比多数人更早接受了真相的复杂度。',
+    strengths:['能长期钻研别人不愿碰的问题','对复杂、晦暗的系统有耐心','不被人群情绪带走，判断独立'],
+    blind:['容易把“没人理解”当成“没人配理解”','对边界和他人禁忌不够敏感'],
+    team:'你是团队的禁区研究员和风险雷达，适合做深度研究、逆向工程、难题攻坚；但需要有人帮你把结论翻译回人间。',
+    growth:'把发现带回光下；在追问真相之前，先问一句“这会伤到谁”。',
+    weapon:'骨杖', relic:'一枚黑蜡烛', motto:'死亡不是终点，是另一种结构。',
+    variants:{
+      moon:{name:'月冥法师',line:'在月光照不到的地方，听见答案。'},
+      shadow:{name:'影冥法师',line:'把禁忌藏进影子，只取需要的那一部分。'},
+      ice:{name:'霜冥法师',line:'用绝对的冷静，保存最危险的真相。'}
+    },
+    gallery:'在无人敢看的地方，点一盏灯。'
   }
 ];
 
@@ -1241,6 +1394,38 @@ const CLASSES_B = [
       forest:{name:'山海画师',line:'把天地万物，收进一幅长卷。'}
     },
     gallery:'把看不见的意境，变成看得见的画面。'
+  },
+  {
+    id:'mechanist', name:'机关师', en:'MECHANIST', sig:['detail','order','imagine'],
+    role:'工程 / 造物者', epithet:'让齿轮替想法转起来',
+    summary:'你相信好想法必须能被造出来。你喜欢拆、装、改，喜欢看一个抽象概念变成能运转的东西。你对结构、顺序和手感有近乎本能的在意，也享受在限制里找到巧妙解法。',
+    strengths:['系统思维强，能把想法拆成可制造的部件','动手能力好，迭代速度快','对结构和细节有直觉'],
+    blind:['容易过度设计，把简单问题做复杂','对“人为什么需要”关注不够'],
+    team:'你是团队的造物者和原型机，适合做工程、产品、工具、自动化；但需要有人提醒你“够用就好”。',
+    growth:'每做一个机关，先问“谁会用、为什么用”；把维护成本也算进设计。',
+    weapon:'机关匣', relic:'一枚铜齿轮', motto:'能转起来的，才算真的。',
+    variants:{
+      thunder:{name:'雷枢机关师',line:'用爆发性的动力，让整座机关活过来。'},
+      fire:{name:'赤焰机关师',line:'以热血和火候，造出会呼吸的器物。'},
+      stone:{name:'玄石机关师',line:'用最稳的结构，扛住最长的运行。'}
+    },
+    gallery:'让齿轮替想法转起来。'
+  },
+  {
+    id:'merchant', name:'行商', en:'MERCHANT', sig:['charisma','risk','insight'],
+    role:'交易 / 资源者', epithet:'把人心和货物，都算进同一条路',
+    summary:'你擅长看见价值流动的方向：谁缺什么、谁有什么、什么可以换什么。你不怕谈条件，也不怕承担一点风险，因为你知道交易本身就是一种创造。你相信先把路走通，再谈谁赢谁输。',
+    strengths:['谈判和连接能力强，能快速撮合资源','对机会和价值差敏感','敢承担计算过的风险'],
+    blind:['容易把关系也当成交易','为了促成，可能过度承诺'],
+    team:'你是团队的行商和资源枢纽，适合做商务、合作、渠道、增长；但需要有人帮你守住长期信誉。',
+    growth:'在账本之外，留一点不算计的情分；有些路，慢一点反而更宽。',
+    weapon:'折扇', relic:'一枚旧铜钱', motto:'先让交易成立，再谈输赢。',
+    variants:{
+      wind:{name:'风行商',line:'跟着风向走，把货卖到最需要的地方。'},
+      water:{name:'流水商',line:'顺势而为，让资源像水一样流动。'},
+      light:{name:'辉光商',line:'用信誉做本钱，让合作越走越亮。'}
+    },
+    gallery:'看准价差，也看准人心。'
   }
 ];
 
@@ -1262,7 +1447,7 @@ const QUESTIONS = [
   ]},
   {q:'你更享受哪种“完成感”：', opts:[
     {t:'亲手把一件东西打磨到无可挑剔。', d:{detail:3, grit:2, order:1}, e:'ice'},
-    {t:'在最后一刻逆转，拿下结果。', d:{edge:3, risk:2, grit:1}, e:'fire'},
+    {t:'在最后一刻逆转，拿下结果。', d:{edge:3, risk:2, grit:1}, e:'thunder'},
     {t:'很多人因为你的作品/行动被连接起来。', d:{charisma:3, empathy:2, command:1}, e:'light'},
     {t:'做出一个别人没见过的全新东西。', d:{imagine:3, solo:2, risk:1}, e:'shadow'}
   ]},
@@ -1291,7 +1476,7 @@ const QUESTIONS = [
     {t:'“关键时候特别敢，也特别准。”', d:{edge:3, risk:2, intuition:1}, e:'thunder'}
   ]},
   {q:'截止日期临近，你更可能：', opts:[
-    {t:'按计划收尾，留出缓冲。', d:{order:3, grit:2, detail:1}, e:'ice'},
+    {t:'按计划收尾，留出缓冲。', d:{order:3, grit:2, detail:1}, e:'wind'},
     {t:'砍掉次要部分，先保证核心体验。', d:{insight:3, command:2, edge:1}, e:'fire'},
     {t:'熬夜冲刺，把最后 10% 做到惊艳。', d:{grit:3, detail:2, risk:1}, e:'thunder'},
     {t:'拉大家一起加班，边做边鼓劲。', d:{charisma:3, command:2, empathy:1}, e:'light'}
@@ -1300,10 +1485,10 @@ const QUESTIONS = [
     {t:'去散步、洗澡、做家务，等它自己冒出来。', d:{intuition:3, solo:2, empathy:1}, e:'water'},
     {t:'翻大量参考，做交叉对比。', d:{insight:3, detail:2, order:1}, e:'ice'},
     {t:'找人聊天，越聊越有火花。', d:{charisma:3, empathy:2, imagine:1}, e:'fire'},
-    {t:'硬写 / 硬做，先产出再挑好的。', d:{grit:3, edge:2, risk:1}, e:'stone'}
+    {t:'硬写 / 硬做，先产出再挑好的。', d:{grit:3, edge:2, risk:1}, e:'thunder'}
   ]},
   {q:'你更愿意成为团队里的：', opts:[
-    {t:'冲在最前面的人。', d:{edge:3, risk:2, charisma:1}, e:'fire'},
+    {t:'冲在最前面的人。', d:{edge:3, risk:2, charisma:1}, e:'thunder'},
     {t:'在背后搭系统、补漏洞的人。', d:{order:3, detail:2, grit:1}, e:'stone'},
     {t:'把大家串起来、定方向的人。', d:{command:3, charisma:2, empathy:1}, e:'light'},
     {t:'独立负责一块、不太被打扰的人。', d:{solo:3, detail:2, insight:1}, e:'shadow'}
@@ -1323,7 +1508,7 @@ const QUESTIONS = [
   {q:'你更喜欢的创作 / 工作状态：', opts:[
     {t:'长时间专注，进入心流。', d:{solo:3, detail:2, grit:1}, e:'ice'},
     {t:'高频互动，边聊边做。', d:{charisma:3, empathy:2, risk:1}, e:'fire'},
-    {t:'有明确目标和反馈，稳步推进。', d:{order:3, command:2, grit:1}, e:'stone'},
+    {t:'有明确目标和反馈，稳步推进。', d:{order:3, command:2, grit:1}, e:'light'},
     {t:'自由探索，不设边界。', d:{imagine:3, risk:2, solo:1}, e:'shadow'}
   ]},
   {q:'做重要决定时，你更依赖：', opts:[
@@ -1339,7 +1524,7 @@ const QUESTIONS = [
     {t:'被琐事打断，无法独处。', d:{solo:3, imagine:2, insight:1}, e:'moon'}
   ]},
   {q:'如果给你一个完全自由的周末：', opts:[
-    {t:'把积压的事情清掉，恢复秩序。', d:{order:3, grit:2, detail:1}, e:'stone'},
+    {t:'把积压的事情清掉，恢复秩序。', d:{order:3, grit:2, detail:1}, e:'light'},
     {t:'去见朋友，或者组织一场聚会。', d:{charisma:3, empathy:2, risk:1}, e:'light'},
     {t:'一个人去陌生地方走走。', d:{solo:3, risk:2, intuition:1}, e:'wind'},
     {t:'窝在家里，沉浸在一个虚构世界。', d:{imagine:3, intuition:2, solo:1}, e:'moon'}
@@ -1352,12 +1537,12 @@ const QUESTIONS = [
   ]},
   {q:'你对“完美”的态度更接近：', opts:[
     {t:'完美是标准，达不到就继续改。', d:{detail:3, order:2, grit:1}, e:'ice'},
-    {t:'完美是幻觉，先完成再迭代。', d:{risk:3, command:2, edge:1}, e:'fire'},
+    {t:'完美是幻觉，先完成再迭代。', d:{risk:3, command:2, edge:1}, e:'wind'},
     {t:'完美是让使用的人感到被理解。', d:{empathy:3, detail:2, intuition:1}, e:'forest'},
     {t:'完美是意料之外、情理之中。', d:{imagine:3, intuition:2, insight:1}, e:'moon'}
   ]},
   {q:'当你要推动一件事：', opts:[
-    {t:'先做出一版，用结果说服人。', d:{edge:3, grit:2, risk:1}, e:'fire'},
+    {t:'先做出一版，用结果说服人。', d:{edge:3, grit:2, risk:1}, e:'water'},
     {t:'先争取关键人物的支持。', d:{command:3, charisma:2, empathy:1}, e:'light'},
     {t:'先把流程和分工设计好。', d:{order:3, command:2, detail:1}, e:'stone'},
     {t:'先讲一个让人相信的故事。', d:{charisma:3, imagine:2, intuition:1}, e:'moon'}
@@ -1367,6 +1552,36 @@ const QUESTIONS = [
     {t:'锋利。', d:{edge:3, solo:2, detail:1}, e:'thunder'},
     {t:'温柔。', d:{empathy:3, charisma:2, intuition:1}, e:'forest'},
     {t:'不可替代。', d:{solo:3, imagine:2, intuition:1}, e:'shadow'}
+  ]},
+  {q:'需要向一群陌生人介绍你的想法，你会：', opts:[
+    {t:'先讲一个能让人代入的故事。', d:{charisma:3, imagine:2, empathy:1}, e:'wind'},
+    {t:'直接给结论、证据和下一步。', d:{insight:3, command:2, order:1}, e:'ice'},
+    {t:'现场做个 demo，让大家直接看到。', d:{risk:3, detail:2, imagine:1}, e:'fire'},
+    {t:'先观察听众，再决定从哪切入。', d:{intuition:3, empathy:2, insight:1}, e:'water'}
+  ]},
+  {q:'资源只够做一件事，你会优先：', opts:[
+    {t:'保住核心体验，砍掉边角。', d:{insight:3, command:2, order:1}, e:'water'},
+    {t:'押注最有想象空间的方向。', d:{imagine:3, risk:2, intuition:1}, e:'fire'},
+    {t:'先保证团队不散。', d:{empathy:3, charisma:2, command:1}, e:'forest'},
+    {t:'选最能借势、越滚越大的那件。', d:{insight:2, risk:2, charisma:2}, e:'wind'}
+  ]},
+  {q:'判断一个人是否靠谱，你最先看：', opts:[
+    {t:'压力下的反应。', d:{edge:2, intuition:3, empathy:1}, e:'thunder'},
+    {t:'答应的小事有没有做到。', d:{detail:3, order:2, grit:1}, e:'stone'},
+    {t:'能不能把复杂问题讲清楚。', d:{insight:3, charisma:2, order:1}, e:'ice'},
+    {t:'利益冲突时的选择。', d:{insight:3, edge:2, command:1}, e:'shadow'}
+  ]},
+  {q:'没人给你反馈时，你会：', opts:[
+    {t:'自己设标准，继续打磨。', d:{solo:3, detail:2, grit:1}, e:'moon'},
+    {t:'主动找人要反馈。', d:{charisma:3, empathy:2, risk:1}, e:'light'},
+    {t:'先发布，让市场说话。', d:{risk:3, edge:2, command:1}, e:'fire'},
+    {t:'相信体感，做到自己满意。', d:{intuition:3, solo:2, imagine:1}, e:'wind'}
+  ]},
+  {q:'你更愿意接手哪种任务：', opts:[
+    {t:'没人做过、规则还没写好的。', d:{risk:3, imagine:2, solo:1}, e:'shadow'},
+    {t:'长期打磨、越做越深的。', d:{grit:3, detail:2, solo:1}, e:'stone'},
+    {t:'能把一群人重新聚起来的。', d:{charisma:3, empathy:2, command:1}, e:'forest'},
+    {t:'需要快速判断、随时转向的。', d:{intuition:3, risk:2, edge:1}, e:'wind'}
   ]}
 ];
 
@@ -1375,108 +1590,273 @@ const QUESTIONS = [
 /* ============================================================
    Character sprite · shared foundation
    600 × 820 · inline SVG · element colour via CSS variable --el
+   Anime rework: shared expressive head + two body poses
    ============================================================ */
 const SPRITE_PARTS = [`
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 <defs>
   <radialGradient id="wxRobe" cx="50%" cy="16%" r="92%">
-    <stop offset="0" stop-color="#2c2341"/>
-    <stop offset=".52" stop-color="#181223"/>
-    <stop offset="1" stop-color="#0a0811"/>
+    <stop offset="0" stop-color="#342849"/>
+    <stop offset=".5" stop-color="#1b1427"/>
+    <stop offset="1" stop-color="#09070f"/>
   </radialGradient>
   <linearGradient id="wxPanel" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#241b36"/>
+    <stop offset="0" stop-color="#2a1f3e"/>
     <stop offset="1" stop-color="#0d0a15"/>
   </linearGradient>
   <linearGradient id="wxSkin" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#ead4b8"/>
-    <stop offset=".7" stop-color="#d3b294"/>
-    <stop offset="1" stop-color="#b28d72"/>
+    <stop offset="0" stop-color="#f2ddc4"/>
+    <stop offset=".58" stop-color="#e0c1a2"/>
+    <stop offset="1" stop-color="#c39a7d"/>
   </linearGradient>
+  <linearGradient id="wxHair" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#251b35"/>
+    <stop offset=".55" stop-color="#140f1f"/>
+    <stop offset="1" stop-color="#090710"/>
+  </linearGradient>
+  <radialGradient id="wxIris" cx="42%" cy="32%" r="72%">
+    <stop offset="0" stop-color="var(--el-2)"/>
+    <stop offset=".46" stop-color="var(--el)"/>
+    <stop offset="1" stop-color="var(--el-3)"/>
+  </radialGradient>
   <linearGradient id="wxGold" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#f6e3b4"/>
+    <stop offset="0" stop-color="#f8e8bd"/>
     <stop offset=".55" stop-color="#d8b56a"/>
-    <stop offset="1" stop-color="#9a7438"/>
+    <stop offset="1" stop-color="#96703a"/>
   </linearGradient>
   <linearGradient id="wxSteel" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#3c3550"/>
-    <stop offset=".5" stop-color="#1d1828"/>
-    <stop offset="1" stop-color="#0c0a12"/>
+    <stop offset="0" stop-color="#514768"/>
+    <stop offset=".5" stop-color="#221b31"/>
+    <stop offset="1" stop-color="#0b0812"/>
   </linearGradient>
   <linearGradient id="wxGlass" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0" stop-color="var(--el)" stop-opacity=".65"/>
     <stop offset="1" stop-color="var(--el)" stop-opacity=".05"/>
   </linearGradient>
+  <linearGradient id="wxSash" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="var(--el)" stop-opacity=".55"/>
+    <stop offset=".55" stop-color="var(--el)" stop-opacity=".16"/>
+    <stop offset="1" stop-color="var(--el)" stop-opacity=".02"/>
+  </linearGradient>
+  <linearGradient id="wxTrain" x1="0" y1="0" x2="1" y2=".6">
+    <stop offset="0" stop-color="#2b2140"/>
+    <stop offset="1" stop-color="#09070f"/>
+  </linearGradient>
 
-  <!-- ================= shared body ================= -->
-  <g id="wxCore">
-    <ellipse cx="300" cy="790" rx="148" ry="17" fill="#000" opacity=".5"/>
-    <ellipse cx="300" cy="790" rx="92" ry="8" fill="var(--el)" opacity=".14"/>
+  <!-- ============ shared anime head ============ -->
+  <g id="wxHead">
+    <!-- swept back hair -->
+    <path d="M246 242 C236 206 264 176 300 176 C336 176 364 206 354 242 C358 292 350 344 340 392 L330 358 C338 316 340 282 338 250 L262 250 C260 282 262 316 270 358 L260 392 C250 344 242 292 246 242 Z" fill="url(#wxHair)" stroke="var(--el)" stroke-opacity=".13" stroke-width="1"/>
+    <path d="M260 252 C252 298 254 344 264 382" fill="none" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
+    <path d="M340 252 C348 298 346 344 336 382" fill="none" stroke="var(--el)" stroke-opacity=".12" stroke-width="1"/>
+    <!-- neck + shoulder shadow -->
+    <path d="M284 288 L284 324 Q300 342 316 324 L316 288 Z" fill="url(#wxSkin)"/>
+    <path d="M284 298 Q300 313 316 298 L316 314 Q300 330 284 314 Z" fill="#b28d72" opacity=".32"/>
+    <!-- ears -->
+    <path d="M256 240 C249 238 246 244 249 252 C251 258 256 261 260 258 Z" fill="#dcb99a" stroke="#a98066" stroke-opacity=".4" stroke-width=".8"/>
+    <path d="M344 240 C351 238 354 244 351 252 C349 258 344 261 340 258 Z" fill="#dcb99a" stroke="#a98066" stroke-opacity=".4" stroke-width=".8"/>
+    <!-- face -->
+    <path d="M300 190 C327 190 345 213 345 245 C345 272 332 295 314 306 C309 309 305 311 300 311 C295 311 291 309 286 306 C268 295 255 272 255 245 C255 213 273 190 300 190 Z" fill="url(#wxSkin)"/>
+    <path d="M300 190 C327 190 345 213 345 245 C345 272 332 295 314 306 C321 292 326 273 326 251 C326 228 317 204 300 190 Z" fill="#9b6f60" opacity=".1"/>
+    <path d="M260 226 C272 212 285 207 300 207 C315 207 328 212 340 226 L339 239 C327 227 314 222 300 222 C286 222 273 227 261 239 Z" fill="#7f5546" opacity=".2"/>
+    <path d="M300 280 C295 294 293 302 299 306 C305 310 311 305 313 299" fill="none" stroke="#b0826d" stroke-opacity=".5" stroke-width="1.1" stroke-linecap="round"/>
+    <path d="M286 299 Q300 307 314 299" fill="none" stroke="#f8e2ca" stroke-opacity=".3" stroke-width="1"/>
+    <!-- blush -->
+    <ellipse cx="269" cy="274" rx="12" ry="5" fill="#d47772" opacity=".13"/>
+    <ellipse cx="331" cy="274" rx="12" ry="5" fill="#d47772" opacity=".13"/>
+    <!-- bangs -->
+    <path d="M256 226 C258 200 276 185 300 185 C324 185 342 200 344 226 C335 216 325 212 316 217 L309 231 L303 213 L297 231 L290 214 L281 218 C272 221 263 229 256 226 Z" fill="url(#wxHair)" stroke="var(--el)" stroke-opacity=".16" stroke-width=".8"/>
+    <path d="M258 222 C247 252 249 290 256 321 L267 345 L273 302 C268 268 270 244 279 228 Z" fill="#171020" stroke="var(--el)" stroke-opacity=".12" stroke-width=".8"/>
+    <path d="M342 222 C353 252 351 290 344 321 L333 345 L327 302 C332 268 330 244 321 228 Z" fill="#171020" stroke="var(--el)" stroke-opacity=".12" stroke-width=".8"/>
+    <path d="M272 206 C284 198 294 196 300 196" fill="none" stroke="var(--el)" stroke-opacity=".22" stroke-width="1"/>
+    <path d="M328 206 C316 198 306 196 300 196" fill="none" stroke="var(--el)" stroke-opacity=".1" stroke-width="1"/>
+    <!-- brows -->
+    <path d="M270 233 C277 227 286 227 292 231" fill="none" stroke="#2c1d2d" stroke-width="2.1" stroke-linecap="round"/>
+    <path d="M330 233 C323 227 314 227 308 231" fill="none" stroke="#2c1d2d" stroke-width="2.1" stroke-linecap="round"/>
+    <!-- eyes -->
+    <path d="M269 251 C272 244 279 241 287 243 C294 245 296 251 294 257 C291 263 281 264 274 260 C270 257 268 254 269 251 Z" fill="#fff8ed"/>
+    <path d="M331 251 C328 244 321 241 313 243 C306 245 304 251 306 257 C309 263 319 264 326 260 C330 257 332 254 331 251 Z" fill="#fff8ed"/>
+    <ellipse cx="283" cy="253" rx="6.8" ry="9.7" fill="url(#wxIris)"/>
+    <ellipse cx="317" cy="253" rx="6.8" ry="9.7" fill="url(#wxIris)"/>
+    <ellipse cx="283" cy="253" rx="2.7" ry="4.9" fill="#170f20"/>
+    <ellipse cx="317" cy="253" rx="2.7" ry="4.9" fill="#170f20"/>
+    <circle cx="280.4" cy="248.4" r="2.35" fill="#fffdf6"/>
+    <circle cx="314.4" cy="248.4" r="2.35" fill="#fffdf6"/>
+    <circle cx="286.6" cy="257.2" r="1.1" fill="var(--el-2)" opacity=".9"/>
+    <circle cx="320.6" cy="257.2" r="1.1" fill="var(--el-2)" opacity=".9"/>
+    <path d="M270 249 C274 244 282 242 289 245 L292 248 C285 246 278 247 272 252 Z" fill="#241827" opacity=".24"/>
+    <path d="M330 249 C326 244 318 242 311 245 L308 248 C315 246 322 247 328 252 Z" fill="#241827" opacity=".24"/>
+    <path d="M267 250 C270 241 279 237 288 241 C292 243 294 246 295 249" fill="none" stroke="#241827" stroke-width="3.3" stroke-linecap="round"/>
+    <path d="M267 250 L261 244" stroke="#241827" stroke-width="2.3" stroke-linecap="round"/>
+    <path d="M333 250 C330 241 321 237 312 241 C308 243 306 246 305 249" fill="none" stroke="#241827" stroke-width="3.3" stroke-linecap="round"/>
+    <path d="M333 250 L339 244" stroke="#241827" stroke-width="2.3" stroke-linecap="round"/>
+    <path d="M271 240 C278 236 286 237 291 241" fill="none" stroke="#3a2838" stroke-opacity=".28" stroke-width=".9" stroke-linecap="round"/>
+    <path d="M329 240 C322 236 314 237 309 241" fill="none" stroke="#3a2838" stroke-opacity=".28" stroke-width=".9" stroke-linecap="round"/>
+    <path d="M272 260 C277 263 284 264 290 261" fill="none" stroke="#6d4a52" stroke-opacity=".45" stroke-width=".9" stroke-linecap="round"/>
+    <path d="M328 260 C323 263 316 264 310 261" fill="none" stroke="#6d4a52" stroke-opacity=".45" stroke-width=".9" stroke-linecap="round"/>
+    <!-- nose + mouth -->
+    <path d="M300 262 C298 269 298 274 301 275 C303 276 305 274 305 272" fill="none" stroke="#a97761" stroke-opacity=".55" stroke-width="1" stroke-linecap="round"/>
+    <path d="M292 287 Q300 293 308 287 Q307 295 300 296 Q293 295 292 287 Z" fill="#8f5a55" fill-opacity=".3" stroke="#8f5a55" stroke-opacity=".8" stroke-width="1.1" stroke-linejoin="round"/>
+    <path d="M294 292 Q300 296 306 292" fill="none" stroke="#f7dcc5" stroke-opacity=".42" stroke-width=".8" stroke-linecap="round"/>
+    <!-- blink -->
+    <g opacity="0">
+      <path d="M267 248 C271 238 280 234 289 238 C294 240 297 245 296 250 L296 253 C289 246 278 245 269 253 Z" fill="url(#wxSkin)"/>
+      <path d="M333 248 C329 238 320 234 311 238 C306 240 303 245 304 250 L304 253 C311 246 322 245 331 253 Z" fill="url(#wxSkin)"/>
+      <animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;.9;.94;.955;.97;1" dur="7.2s" repeatCount="indefinite"/>
+    </g>
+    <!-- hair rim light -->
+    <path d="M256 226 C258 200 276 185 300 185" fill="none" stroke="var(--el)" stroke-opacity=".3" stroke-width="1.3"/>
+    <path d="M244 242 C234 204 264 174 300 174" fill="none" stroke="var(--el)" stroke-opacity=".18" stroke-width="1"/>
+  </g>
 
+  <!-- ============ aura / ground ============ -->
+  <g id="wxAura">
+    <path d="M118 670 C76 456 178 214 396 158" fill="none" stroke="var(--el)" stroke-opacity=".15" stroke-width="1.4" stroke-dasharray="2 11">
+      <animate attributeName="stroke-dashoffset" values="0;-120" dur="16s" repeatCount="indefinite"/>
+    </path>
+    <path d="M488 690 C526 470 448 236 246 178" fill="none" stroke="var(--el)" stroke-opacity=".1" stroke-width="1" stroke-dasharray="1 16">
+      <animate attributeName="stroke-dashoffset" values="0;90" dur="19s" repeatCount="indefinite"/>
+    </path>
+    <g fill="none" stroke="var(--el)" stroke-linecap="round">
+      <path d="M96 512 C150 492 190 462 226 424" stroke-opacity=".13" stroke-width="1.2">
+        <animate attributeName="opacity" values=".05;.3;.05" dur="6.4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M506 574 C462 558 428 532 402 504" stroke-opacity=".1" stroke-width="1">
+        <animate attributeName="opacity" values=".2;.02;.2" dur="7.2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M128 620 C186 604 226 582 260 552" stroke-opacity=".08" stroke-width=".9">
+        <animate attributeName="opacity" values=".02;.2;.02" dur="5.6s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <g fill="var(--el)">
+      <circle cx="150" cy="284" r="2.2"><animate attributeName="opacity" values=".1;.8;.1" dur="4.6s" repeatCount="indefinite"/></circle>
+      <circle cx="452" cy="318" r="1.6"><animate attributeName="opacity" values=".7;.1;.7" dur="5.4s" repeatCount="indefinite"/></circle>
+      <circle cx="118" cy="548" r="1.5"><animate attributeName="opacity" values=".2;.7;.2" dur="6.1s" repeatCount="indefinite"/></circle>
+      <circle cx="486" cy="472" r="1.2"><animate attributeName="opacity" values=".6;.1;.6" dur="4.2s" repeatCount="indefinite"/></circle>
+      <circle cx="196" cy="716" r="1.4"><animate attributeName="opacity" values=".1;.6;.1" dur="5.8s" repeatCount="indefinite"/></circle>
+      <circle cx="410" cy="708" r="1.8"><animate attributeName="opacity" values=".5;.1;.5" dur="4.9s" repeatCount="indefinite"/></circle>
+    </g>
+  </g>
+
+  <!-- ============ sash (behind body) ============ -->
+  <g id="wxSashBack" fill="none" stroke-linecap="round">
+    <path d="M250 322 C210 302 164 308 126 342 C168 344 206 364 234 398" stroke="url(#wxSash)" stroke-width="10" opacity=".55">
+      <animateTransform attributeName="transform" type="translate" values="0 0;-4 2;0 0" dur="8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M350 332 C392 296 438 274 490 282 C462 310 442 342 428 378 C414 418 410 466 414 514" stroke="url(#wxSash)" stroke-width="8" opacity=".5">
+      <animateTransform attributeName="transform" type="translate" values="0 0;5 4;0 0" dur="9s" repeatCount="indefinite"/>
+    </path>
+    <path d="M352 334 C390 302 426 286 466 288" stroke="var(--el)" stroke-opacity=".34" stroke-width="1"/>
+    <path d="M416 500 C430 518 446 524 462 518" stroke="var(--el)" stroke-opacity=".3" stroke-width=".9"/>
+    <path d="M482 286 C508 302 522 334 516 370" stroke="var(--el)" stroke-opacity=".22" stroke-width="1" stroke-dasharray="3 8">
+      <animate attributeName="opacity" values=".08;.4;.08" dur="6.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- ============ body without arms ============ -->
+  <g id="wxBody">
+    <ellipse cx="300" cy="792" rx="158" ry="17" fill="#000" opacity=".52"/>
+    <ellipse cx="300" cy="792" rx="94" ry="7" fill="var(--el)" opacity=".16"/>
+    <!-- wind-swept train -->
+    <path d="M204 620 C176 654 154 704 142 754 C158 770 190 776 222 764 C236 736 242 700 246 668 Z" fill="url(#wxTrain)" stroke="#d8b56a" stroke-opacity=".2" stroke-width="1.1"/>
+    <path d="M148 748 Q184 762 218 748" fill="none" stroke="var(--el)" stroke-opacity=".28" stroke-width="1.2"/>
+    <path d="M158 728 Q190 740 222 726" fill="none" stroke="#d8b56a" stroke-opacity=".18" stroke-width="1"/>
     <!-- back robe -->
-    <path d="M300 312 C252 312 214 336 198 388 C181 446 178 520 186 602 L196 736 C226 772 262 788 300 790 C338 788 374 772 404 736 L414 602 C422 520 419 446 402 388 C386 336 348 312 300 312Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.3"/>
-
+    <path d="M300 312 C252 312 214 336 198 388 C181 446 178 520 186 602 L196 736 C226 772 262 788 300 790 C338 788 374 772 404 736 L414 602 C422 520 419 446 402 388 C386 336 348 312 300 312Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".32" stroke-width="1.3"/>
+    <path d="M212 390 C194 474 192 576 200 690 L206 724 C214 744 228 758 244 766" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="10" stroke-linecap="round"/>
+    <path d="M388 390 C406 474 408 576 400 690 L394 724 C386 744 372 758 356 766" fill="none" stroke="var(--el)" stroke-opacity=".1" stroke-width="7" stroke-linecap="round"/>
     <!-- inner front panel -->
-    <path d="M300 336 L267 375 L252 724 C274 744 326 744 348 724 L333 375 Z" fill="#0b0912" opacity=".82"/>
+    <path d="M300 336 L267 375 L252 724 C274 744 326 744 348 724 L333 375 Z" fill="#0b0912" opacity=".84"/>
     <path d="M300 344 L300 752" stroke="#d8b56a" stroke-opacity=".18" stroke-width="1"/>
     <path d="M266 380 C254 484 246 620 241 738" fill="none" stroke="#d8b56a" stroke-opacity=".12" stroke-width="1"/>
     <path d="M334 380 C346 484 354 620 359 738" fill="none" stroke="#d8b56a" stroke-opacity=".12" stroke-width="1"/>
-
-    <!-- robe side folds -->
-    <path d="M220 372 C204 436 199 520 204 602 L210 724" fill="none" stroke="#d8b56a" stroke-opacity=".2" stroke-width="1"/>
-    <path d="M380 372 C396 436 401 520 396 602 L390 724" fill="none" stroke="#d8b56a" stroke-opacity=".2" stroke-width="1"/>
-    <path d="M246 746 Q300 770 354 746" fill="none" stroke="#d8b56a" stroke-opacity=".34" stroke-width="1.2"/>
-    <path d="M238 758 Q300 786 362 758" fill="none" stroke="#d8b56a" stroke-opacity=".18" stroke-width="1"/>
-
-    <!-- chest panels -->
-    <path d="M256 344 Q300 366 344 344 L352 424 Q300 466 248 424 Z" fill="url(#wxPanel)" stroke="#d8b56a" stroke-opacity=".36" stroke-width="1.2"/>
-    <path d="M300 356 L300 452" stroke="#d8b56a" stroke-opacity=".22" stroke-width="1"/>
-    <path d="M261 347 L300 390 L339 347" fill="none" stroke="#d8b56a" stroke-opacity=".38" stroke-width="1.2"/>
-
+    <!-- folds -->
+    <path d="M220 372 C204 436 199 520 204 602 L210 724" fill="none" stroke="#d8b56a" stroke-opacity=".22" stroke-width="1"/>
+    <path d="M380 372 C396 436 401 520 396 602 L390 724" fill="none" stroke="#d8b56a" stroke-opacity=".22" stroke-width="1"/>
+    <path d="M238 748 Q300 774 362 748" fill="none" stroke="#d8b56a" stroke-opacity=".34" stroke-width="1.2"/>
+    <path d="M230 762 Q300 792 370 762" fill="none" stroke="#d8b56a" stroke-opacity=".16" stroke-width="1"/>
+    <!-- chest -->
+    <path d="M256 344 Q300 366 344 344 L352 424 Q300 466 248 424 Z" fill="url(#wxPanel)" stroke="#d8b56a" stroke-opacity=".38" stroke-width="1.2"/>
+    <path d="M300 356 L300 452" stroke="#d8b56a" stroke-opacity=".24" stroke-width="1"/>
+    <path d="M261 347 L300 390 L339 347" fill="none" stroke="#d8b56a" stroke-opacity=".4" stroke-width="1.2"/>
+    <path d="M258 354 Q300 376 342 354" fill="none" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
     <!-- belt -->
-    <path d="M252 482 Q300 500 348 482 L352 515 Q300 534 248 515 Z" fill="#1b1527" stroke="#d8b56a" stroke-opacity=".46" stroke-width="1.2"/>
-    <path d="M252 496 Q300 513 348 496" fill="none" stroke="var(--el)" stroke-opacity=".5" stroke-width="1.2"/>
+    <path d="M252 482 Q300 500 348 482 L352 515 Q300 534 248 515 Z" fill="#1b1527" stroke="#d8b56a" stroke-opacity=".5" stroke-width="1.2"/>
+    <path d="M252 496 Q300 513 348 496" fill="none" stroke="var(--el)" stroke-opacity=".55" stroke-width="1.2"/>
     <circle cx="300" cy="505" r="8" fill="#0b0912" stroke="url(#wxGold)" stroke-width="1.4"/>
     <circle cx="300" cy="505" r="2.5" fill="var(--el)"/>
+    <!-- skirt split -->
+    <path d="M300 536 L300 748" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
+    <path d="M300 540 C294 600 294 668 300 736" fill="none" stroke="var(--el)" stroke-opacity=".16" stroke-width="1"/>
+  </g>
 
-    <!-- sleeves -->
-    <path d="M224 340 C199 360 183 426 174 494 C168 544 155 584 158 610 C161 632 186 636 198 618 C211 599 208 568 214 522 C221 474 231 400 252 356 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.2"/>
-    <path d="M376 340 C401 360 417 426 426 494 C432 544 445 584 442 610 C439 632 414 636 402 618 C389 599 392 568 386 522 C379 474 369 400 348 356 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.2"/>
-    <path d="M161 599 Q178 617 196 605" fill="none" stroke="#d8b56a" stroke-opacity=".42" stroke-width="1.3"/>
-    <path d="M439 599 Q422 617 404 605" fill="none" stroke="#d8b56a" stroke-opacity=".42" stroke-width="1.3"/>
-    <path d="M183 446 C190 474 188 520 181 558" fill="none" stroke="var(--el)" stroke-opacity=".24" stroke-width="1"/>
-    <path d="M417 446 C410 474 412 520 419 558" fill="none" stroke="var(--el)" stroke-opacity=".24" stroke-width="1"/>
+  <!-- ============ dynamic arms ============ -->
+  <g id="wxArmDynamic">
+    <!-- left upper sleeve -->
+    <path d="M246 340 C216 346 190 382 176 426 C166 460 170 490 186 502 C202 512 218 496 222 474 C226 446 238 412 258 382 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.1"/>
+    <path d="M238 352 C212 366 194 398 184 434" fill="none" stroke="var(--el)" stroke-opacity=".22" stroke-width="1"/>
+    <!-- left trailing sleeve -->
+    <path d="M178 452 C148 482 132 528 140 574 C154 582 176 562 188 528 C196 502 196 474 192 452 Z" fill="url(#wxSash)" stroke="var(--el)" stroke-opacity=".25" stroke-width="1">
+      <animateTransform attributeName="transform" type="translate" values="0 0;-5 3;0 0" dur="7.4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M144 564 Q160 546 174 518" fill="none" stroke="var(--el)" stroke-opacity=".35" stroke-width="1"/>
+    <!-- left forearm + hand, raised -->
+    <path d="M180 488 C180 462 184 430 192 408 L206 412 C198 438 196 462 200 486 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M182 484 Q194 494 204 486" fill="none" stroke="#d8b56a" stroke-opacity=".7" stroke-width="2.2"/>
+    <g transform="translate(-4 0)">
+      <path d="M194 409 C189 399 191 388 197 380 C200 374 204 368 208 363 C211 359 216 362 214 367 L209 382 L217 364 C220 359 225 362 223 367 L216 386 L224 370 C227 365 232 368 229 374 L221 393 L228 382 C231 377 236 381 233 386 L225 405 C219 418 204 420 198 410 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".5" stroke-width="1"/>
+      <path d="M202 404 C204 395 207 388 210 382 M209 406 C211 398 214 392 218 387" fill="none" stroke="#a98066" stroke-opacity=".45" stroke-width=".8"/>
+      <path d="M198 397 C204 392 210 392 215 396" fill="none" stroke="var(--el)" stroke-opacity=".4" stroke-width="1"/>
+    </g>
+    <!-- right upper sleeve -->
+    <path d="M354 340 C384 348 410 384 424 428 C434 462 428 492 412 502 C396 512 382 494 380 472 C378 444 366 412 342 382 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.1"/>
+    <path d="M362 352 C388 368 406 400 416 436" fill="none" stroke="var(--el)" stroke-opacity=".18" stroke-width="1"/>
+    <!-- right hanging sleeve (hand hidden in fabric) -->
+    <path d="M408 494 C424 506 436 530 440 558 C444 584 438 606 424 618 C410 628 394 612 394 594 C394 566 398 526 402 502 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".28" stroke-width="1.1"/>
+    <path d="M412 510 C424 530 430 556 430 580" fill="none" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
+    <path d="M398 600 Q414 612 432 600" fill="none" stroke="#d8b56a" stroke-opacity=".7" stroke-width="2.2"/>
+    <path d="M424 618 C436 634 444 654 446 674" fill="none" stroke="url(#wxSash)" stroke-width="5" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="translate" values="0 0;4 4;0 0" dur="8.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
 
-    <!-- hands -->
-    <path d="M173 609 C168 618 167 632 172 640 C177 647 186 644 189 636 C192 627 187 616 182 611 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".5" stroke-width="1"/>
-    <path d="M175 622 L186 620 M176 629 L187 627" stroke="#a98066" stroke-opacity=".5" stroke-width=".8"/>
-    <path d="M427 609 C432 618 433 632 428 640 C423 647 414 644 411 636 C408 627 413 616 418 611 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".5" stroke-width="1"/>
-    <path d="M425 622 L414 620 M424 629 L413 627" stroke="#a98066" stroke-opacity=".5" stroke-width=".8"/>
+  <!-- ============ calm arms (instruments / crafts) ============ -->
+  <g id="wxArmStill">
+    <path d="M246 342 C216 358 196 410 190 470 C186 520 180 560 186 590 C198 606 216 596 220 574 C226 530 230 480 240 430 C246 400 256 372 264 356 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.1"/>
+    <path d="M240 354 C216 398 204 464 202 532" fill="none" stroke="var(--el)" stroke-opacity=".18" stroke-width="1"/>
+    <path d="M184 584 Q200 598 218 584" fill="none" stroke="#d8b56a" stroke-opacity=".6" stroke-width="2"/>
+    <path d="M354 342 C384 358 404 410 410 470 C414 520 420 560 414 590 C402 606 384 596 380 574 C374 530 370 480 360 430 C354 400 344 372 336 356 Z" fill="url(#wxRobe)" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.1"/>
+    <path d="M360 354 C384 398 396 464 398 532" fill="none" stroke="var(--el)" stroke-opacity=".15" stroke-width="1"/>
+    <path d="M416 584 Q400 598 382 584" fill="none" stroke="#d8b56a" stroke-opacity=".6" stroke-width="2"/>
+    <path d="M190 570 C186 548 190 526 198 510" fill="none" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
+    <path d="M410 570 C414 548 410 526 402 510" fill="none" stroke="var(--el)" stroke-opacity=".15" stroke-width="1"/>
+  </g>
 
-    <!-- neck -->
-    <path d="M286 280 L286 318 Q300 334 314 318 L314 280 Z" fill="url(#wxSkin)"/>
-    <path d="M286 298 Q300 311 314 298" fill="none" stroke="#9d785f" stroke-opacity=".35" stroke-width="1"/>
+  <!-- ============ rim light ============ -->
+  <g id="wxRim" fill="none" stroke="var(--el)" stroke-linecap="round">
+    <path d="M300 312 C252 312 214 336 198 388 C181 446 178 520 186 602" stroke-opacity=".28" stroke-width="1.8"/>
+    <path d="M300 190 C327 190 345 213 345 245 C345 272 332 295 314 306" stroke-opacity=".18" stroke-width="1.2"/>
+    <path d="M244 242 C234 204 264 174 300 174" stroke-opacity=".2" stroke-width="1.1"/>
+  </g>
 
-    <!-- ears + face -->
-    <ellipse cx="260" cy="246" rx="8.5" ry="14" fill="#c5a184" stroke="#9d785f" stroke-opacity=".4" stroke-width=".8"/>
-    <ellipse cx="340" cy="246" rx="8.5" ry="14" fill="#c5a184" stroke="#9d785f" stroke-opacity=".4" stroke-width=".8"/>
-    <path d="M300 192 C326 192 345 216 345 247 C345 281 326 302 300 302 C274 302 255 281 255 247 C255 216 274 192 300 192 Z" fill="url(#wxSkin)"/>
-    <path d="M264 248 Q270 292 300 302 Q330 292 336 248 Q322 274 300 276 Q278 274 264 248 Z" fill="#b28d72" opacity=".22"/>
+  <!-- ============ full core: dynamic pose ============ -->
+  <g id="wxCore">
+    <use href="#wxAura"/>
+    <use href="#wxSashBack"/>
+    <use href="#wxBody"/>
+    <use href="#wxArmDynamic"/>
+    <use href="#wxHead"/>
+    <use href="#wxRim"/>
+  </g>
 
-    <!-- brows / eyes -->
-    <path d="M279 233 Q287 229 295 232" fill="none" stroke="#3a2838" stroke-width="1.7" stroke-linecap="round"/>
-    <path d="M305 232 Q313 229 321 233" fill="none" stroke="#3a2838" stroke-width="1.7" stroke-linecap="round"/>
-    <path d="M278 246 Q287 241 296 246" fill="none" stroke="#2a1c2c" stroke-width="1.6" stroke-linecap="round"/>
-    <path d="M304 246 Q313 241 322 246" fill="none" stroke="#2a1c2c" stroke-width="1.6" stroke-linecap="round"/>
-    <circle cx="288" cy="245.5" r="2" fill="#2a1c2c"/><circle cx="312" cy="245.5" r="2" fill="#2a1c2c"/>
-    <circle cx="288.6" cy="244.8" r=".6" fill="#f6e3b4"/><circle cx="312.6" cy="244.8" r=".6" fill="#f6e3b4"/>
-    <!-- nose / mouth -->
-    <path d="M300 248 L297.5 264 Q300 267 304 265" fill="none" stroke="#9d785f" stroke-opacity=".6" stroke-width="1" stroke-linecap="round"/>
-    <path d="M291 277 Q300 280 309 277" fill="none" stroke="#8f5e57" stroke-opacity=".8" stroke-width="1.3" stroke-linecap="round"/>
-
-    <!-- faint elemental rim light -->
-    <path d="M300 312 C252 312 214 336 198 388 C181 446 178 520 186 602 L196 736" fill="none" stroke="var(--el)" stroke-opacity=".22" stroke-width="2"/>
-    <path d="M300 192 C326 192 345 216 345 247 C345 281 326 302 300 302" fill="none" stroke="var(--el)" stroke-opacity=".15" stroke-width="1.4"/>
+  <!-- ============ full core: calm pose ============ -->
+  <g id="wxCoreStill">
+    <use href="#wxAura"/>
+    <use href="#wxSashBack"/>
+    <use href="#wxBody"/>
+    <use href="#wxArmStill"/>
+    <use href="#wxHead"/>
+    <use href="#wxRim"/>
   </g>
 </defs>
 `];
@@ -1862,7 +2242,7 @@ SPRITE_PARTS.push(`
 <!-- 08 · BARD -->
 <symbol id="ch-bard" viewBox="0 0 600 820">
   <path d="M226 342 C190 410 180 530 190 680 L214 746 Q256 770 300 772 Q344 770 386 746 L410 680 C420 530 410 410 374 342 Z" fill="#241526" opacity=".5"/>
-  <use href="#wxCore"/>
+  <use href="#wxCoreStill"/>
   <!-- hair / cap -->
   <path d="M260 214 C248 242 250 290 256 330 C270 306 272 276 274 248 Z" fill="#23182c"/>
   <path d="M340 214 C352 242 350 290 344 330 C330 306 328 276 326 248 Z" fill="#23182c"/>
@@ -1908,6 +2288,134 @@ SPRITE_PARTS.push(`
     <circle cx="140" cy="420" r="1.4"><animate attributeName="opacity" values=".2;.9;.2" dur="4s" repeatCount="indefinite"/></circle>
     <circle cx="458" cy="500" r="1.2"><animate attributeName="opacity" values=".8;.2;.8" dur="5s" repeatCount="indefinite"/></circle>
   </g>
+
+<!-- 09 · RANGER -->
+<symbol id="ch-ranger" viewBox="0 0 600 820">
+  <!-- weather cloak + hood -->
+  <path d="M300 146 C236 148 206 198 208 258 C209 300 224 336 250 358 L350 358 C376 336 391 300 392 258 C394 198 364 148 300 146 Z" fill="#101b16" stroke="var(--el)" stroke-opacity=".30" stroke-width="1.4"/>
+  <path d="M300 156 C250 158 224 198 226 254 C227 286 238 316 258 338" fill="none" stroke="var(--el)" stroke-opacity=".16" stroke-width="1"/>
+  <path d="M226 350 C192 456 176 590 188 720 L218 758 L244 698 C226 598 232 474 252 384 Z" fill="#0e1914" opacity=".82"/>
+  <path d="M374 350 C408 456 424 590 412 720 L382 758 L356 698 C374 598 368 474 348 384 Z" fill="#0e1914" opacity=".82"/>
+  <!-- quiver on the back -->
+  <g transform="translate(398 356) rotate(17)">
+    <path d="M0 0 L30 0 L34 124 L8 132 Z" fill="#1c1722" stroke="#d8b56a" stroke-opacity=".45" stroke-width="1.2"/>
+    <path d="M7 -34 L7 8 M16 -42 L16 8 M25 -30 L25 8" stroke="#d8b56a" stroke-opacity=".6" stroke-width="1.5"/>
+    <path d="M3 -36 L7 -48 L11 -36 M12 -44 L16 -56 L20 -44 M21 -32 L25 -44 L29 -32" fill="var(--el)" opacity=".75"/>
+    <path d="M2 24 L32 24 M2 74 L34 74" stroke="var(--el)" stroke-opacity=".28" stroke-width="1"/>
+  </g>
+  <use href="#wxCore"/>
+  <!-- hood rim / feather -->
+  <path d="M256 334 C238 300 238 250 258 212" fill="none" stroke="var(--el)" stroke-opacity=".32" stroke-width="1.3"/>
+  <path d="M346 334 C362 302 364 252 344 214" fill="none" stroke="var(--el)" stroke-opacity=".22" stroke-width="1.1"/>
+  <path d="M268 202 C244 184 230 158 232 128 C250 148 262 162 282 176 Z" fill="#1b2a22" stroke="var(--el)" stroke-opacity=".45" stroke-width="1"/>
+  <path d="M252 154 Q236 140 230 118" fill="none" stroke="#d8b56a" stroke-opacity=".5" stroke-width="1.2"/>
+  <!-- scarf -->
+  <path d="M258 332 Q300 354 342 332 L356 358 Q300 386 244 358 Z" fill="#1c2a24" stroke="#d8b56a" stroke-opacity=".45" stroke-width="1.2"/>
+  <path d="M344 350 C378 356 404 374 420 400 C396 402 374 396 354 380 Z" fill="#273a30" stroke="var(--el)" stroke-opacity=".28" stroke-width="1">
+    <animateTransform attributeName="transform" type="translate" values="0 0;5 3;0 0" dur="6.8s" repeatCount="indefinite"/>
+  </path>
+  <!-- bow -->
+  <g>
+    <path d="M184 220 C106 300 104 580 184 664" fill="none" stroke="url(#wxGold)" stroke-opacity=".85" stroke-width="4"/>
+    <path d="M184 220 C118 304 116 576 184 664" fill="none" stroke="var(--el)" stroke-opacity=".35" stroke-width="1.4"/>
+    <path d="M184 228 L184 656" fill="none" stroke="#f3ead8" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M168 226 L184 214 L200 226 M168 658 L184 670 L200 658" fill="none" stroke="#d8b56a" stroke-opacity=".75" stroke-width="2"/>
+    <path d="M172 436 L196 436" stroke="#d8b56a" stroke-opacity=".8" stroke-width="4"/>
+    <path d="M184 250 L184 610" stroke="var(--el)" stroke-opacity=".55" stroke-width="1.2"/>
+    <path d="M184 250 L176 268 L184 264 L192 268 Z" fill="var(--el)"/>
+    <path d="M184 610 L178 592 L184 596 L190 592 Z" fill="#d8b56a" opacity=".65"/>
+  </g>
+  <!-- compass on belt -->
+  <g transform="translate(342 502)">
+    <circle r="13" fill="#0d1512" stroke="url(#wxGold)" stroke-width="1.5"/>
+    <circle r="8" fill="none" stroke="var(--el)" stroke-opacity=".4" stroke-width=".8"/>
+    <path d="M0 -8 L3 0 L0 8 L-3 0 Z" fill="var(--el)" opacity=".8"/>
+    <circle r="1.6" fill="#d8b56a"/>
+  </g>
+  <!-- hawk -->
+  <g transform="translate(414 690)" fill="#0a1210" stroke="var(--el)" stroke-opacity=".4" stroke-width="1">
+    <path d="M0 26 C2 10 16 2 34 8 C42 12 46 20 42 28 L36 50 L20 56 L10 48 Z"/>
+    <path d="M34 8 C44 2 54 4 58 12 C50 12 44 16 40 22 Z"/>
+    <circle cx="46" cy="14" r="1.7" fill="var(--el)"/>
+    <path d="M42 30 C54 32 62 38 66 46 C56 44 46 42 38 38" fill="none"/>
+    <path d="M10 48 L4 60 M20 56 L18 68 M32 54 L34 66" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1.2"/>
+  </g>
+  <!-- leaves / motes -->
+  <g fill="var(--el)" opacity=".55">
+    <path d="M130 300 Q148 282 164 292 Q150 310 130 300 Z"><animateTransform attributeName="transform" type="translate" values="0 0;-9 -12;0 0" dur="7.4s" repeatCount="indefinite"/></path>
+    <path d="M448 470 Q466 452 482 464 Q468 482 448 470 Z"><animateTransform attributeName="transform" type="translate" values="0 0;8 -10;0 0" dur="6.2s" repeatCount="indefinite"/></path>
+    <circle cx="152" cy="240" r="1.6"><animate attributeName="opacity" values=".1;.8;.1" dur="4.2s" repeatCount="indefinite"/></circle>
+    <circle cx="452" cy="330" r="1.2"><animate attributeName="opacity" values=".7;.1;.7" dur="5.1s" repeatCount="indefinite"/></circle>
+    <circle cx="136" cy="560" r="1.3"><animate attributeName="opacity" values=".2;.7;.2" dur="4.7s" repeatCount="indefinite"/></circle>
+  </g>
+</symbol>
+
+<!-- 10 · NECROMANCER -->
+<symbol id="ch-necromancer" viewBox="0 0 600 820">
+  <!-- high collar -->
+  <path d="M214 386 C204 324 214 270 244 238 L256 302 L272 246 L288 306 L300 252 L312 306 L328 246 L344 302 L356 238 C386 270 396 324 386 386 L344 354 L256 354 Z" fill="#150f20" stroke="var(--el)" stroke-opacity=".48" stroke-width="1.3"/>
+  <path d="M246 260 L256 302 M354 260 L344 302" stroke="var(--el)" stroke-opacity=".3" stroke-width="1"/>
+  <!-- tattered cloak -->
+  <path d="M226 360 C196 470 184 604 196 728 L214 754 L230 716 L244 756 L258 706 C240 600 240 466 258 390 Z" fill="#0e0a16" opacity=".88"/>
+  <path d="M374 360 C404 470 416 604 404 728 L386 754 L370 716 L356 756 L342 706 C360 600 360 466 342 390 Z" fill="#0e0a16" opacity=".88"/>
+  <!-- staff -->
+  <g>
+    <path d="M502 752 C494 650 500 520 498 404 C496 328 502 268 500 216" fill="none" stroke="#6f5a43" stroke-opacity=".8" stroke-width="6"/>
+    <path d="M502 752 C494 650 500 520 498 404 C496 328 502 268 500 216" fill="none" stroke="var(--el)" stroke-opacity=".28" stroke-width="1.4"/>
+    <path d="M500 218 C488 204 478 190 480 168 C490 176 498 190 502 202 C506 188 516 176 528 168 C528 190 516 206 502 218 Z" fill="none" stroke="url(#wxGold)" stroke-width="2.4"/>
+    <path d="M486 180 C486 164 492 154 500 150 C508 154 514 164 514 180 C514 190 510 196 506 200 L506 208 L494 208 L494 200 C490 196 486 190 486 180 Z" fill="#d9cdb4" stroke="#a99a7f" stroke-width="1.1"/>
+    <circle cx="494" cy="178" r="3" fill="#171020"/><circle cx="506" cy="178" r="3" fill="#171020"/>
+    <path d="M496 192 L500 188 L504 192" fill="none" stroke="#a99a7f" stroke-width="1"/>
+    <circle cx="500" cy="228" r="16" fill="var(--el)" opacity=".16"/>
+    <circle cx="500" cy="228" r="10" fill="none" stroke="var(--el)" stroke-width="1.4"><animate attributeName="opacity" values=".4;1;.4" dur="3.2s" repeatCount="indefinite"/></circle>
+    <circle cx="500" cy="228" r="3.4" fill="var(--el)"/>
+    <path d="M484 244 Q500 252 516 244" fill="none" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.2"/>
+  </g>
+  <use href="#wxCore"/>
+  <!-- collar front -->
+  <path d="M256 340 Q300 366 344 340 L354 384 Q300 410 246 384 Z" fill="#181022" stroke="var(--el)" stroke-opacity=".32" stroke-width="1.2"/>
+  <path d="M300 372 L306 388 L300 406 L294 388 Z" fill="var(--el)" opacity=".55"/>
+  <!-- chains -->
+  <g fill="none" stroke="var(--el)" stroke-opacity=".18" stroke-width="1.1" stroke-dasharray="5 4">
+    <path d="M248 330 C206 380 188 456 198 530"><animate attributeName="stroke-dashoffset" values="0;-54" dur="9s" repeatCount="indefinite"/></path>
+    <path d="M352 334 C392 388 408 462 398 536"><animate attributeName="stroke-dashoffset" values="0;54" dur="11s" repeatCount="indefinite"/></path>
+  </g>
+  <!-- floating candles -->
+  <g fill="#e8dcc4">
+    <g transform="translate(142 424)"><rect x="-6" y="0" width="12" height="34" rx="2" fill="#d9cdb4" stroke="#a99a7f" stroke-opacity=".5"/><path d="M-6 6 Q-1 10 1 5 Q3 11 6 6" fill="none" stroke="#f3ead8" stroke-opacity=".7"/><path d="M0 -4 C-7 -14 0 -22 0 -22 C0 -22 7 -14 0 -4 Z" fill="var(--el)"><animate attributeName="opacity" values=".55;1;.55" dur="2.8s" repeatCount="indefinite"/></path><circle cx="0" cy="-14" r="12" fill="var(--el)" opacity=".08"/></g>
+    <g transform="translate(174 522) scale(.8)"><rect x="-5" y="0" width="10" height="30" rx="2" fill="#d9cdb4" stroke="#a99a7f" stroke-opacity=".5"/><path d="M0 -3 C-6 -12 0 -19 0 -19 C0 -19 6 -12 0 -3 Z" fill="var(--el)"><animate attributeName="opacity" values=".7;1;.7" dur="3.4s" repeatCount="indefinite"/></path><circle cx="0" cy="-12" r="10" fill="var(--el)" opacity=".07"/></g>
+    <g transform="translate(446 610) scale(.9)"><rect x="-5" y="0" width="10" height="30" rx="2" fill="#d9cdb4" stroke="#a99a7f" stroke-opacity=".5"/><path d="M0 -3 C-6 -12 0 -19 0 -19 C0 -19 6 -12 0 -3 Z" fill="var(--el)"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></path><circle cx="0" cy="-12" r="10" fill="var(--el)" opacity=".07"/></g>
+  </g>
+  <!-- spectral hand -->
+  <g transform="translate(108 650)" fill="none" stroke="var(--el)" stroke-opacity=".5" stroke-width="1.4">
+    <path d="M30 68 C18 46 28 26 48 22 C62 18 74 28 76 42"/>
+    <path d="M72 46 C78 34 90 32 96 42 C100 50 94 58 86 60"/>
+    <path d="M70 58 C76 50 88 50 92 60 C94 68 86 74 78 72"/>
+    <path d="M48 22 C44 8 50 -2 60 0 C68 2 70 12 66 22"/>
+    <path d="M60 24 C58 10 64 2 72 6 C78 10 78 20 74 28"/>
+    <path d="M40 64 C50 58 62 58 72 64" stroke-opacity=".32"/>
+    <path d="M30 68 C14 82 10 96 16 112" stroke-opacity=".25" stroke-dasharray="4 6"/>
+  </g>
+  <!-- raven -->
+  <g transform="translate(360 692)" fill="#08060d" stroke="var(--el)" stroke-opacity=".35" stroke-width="1">
+    <path d="M16 54 C8 42 10 24 24 14 C36 6 52 8 60 20 C66 30 62 46 52 54 Z"/>
+    <path d="M54 18 C64 10 74 12 80 22 C70 22 64 28 60 36 Z"/>
+    <path d="M60 52 C70 58 76 68 74 78 C66 70 58 64 50 62" fill="none"/>
+    <circle cx="68" cy="22" r="2" fill="var(--el)"/>
+  </g>
+  <!-- wisps -->
+  <g fill="none" stroke="var(--el)" stroke-opacity=".24" stroke-width="1.2">
+    <path d="M190 350 C160 380 150 420 158 456"><animate attributeName="opacity" values=".1;.45;.1" dur="5.6s" repeatCount="indefinite"/></path>
+    <path d="M410 330 C440 364 450 402 444 438"><animate attributeName="opacity" values=".4;.1;.4" dur="6.4s" repeatCount="indefinite"/></path>
+    <path d="M220 600 C250 620 268 646 270 672"><animate attributeName="opacity" values=".15;.4;.15" dur="7.2s" repeatCount="indefinite"/></path>
+  </g>
+  <g fill="var(--el)">
+    <circle cx="150" cy="316" r="1.7"><animate attributeName="opacity" values=".1;.9;.1" dur="4.4s" repeatCount="indefinite"/></circle>
+    <circle cx="432" cy="292" r="1.3"><animate attributeName="opacity" values=".8;.1;.8" dur="5.2s" repeatCount="indefinite"/></circle>
+    <circle cx="462" cy="470" r="1.5"><animate attributeName="opacity" values=".2;.7;.2" dur="4.9s" repeatCount="indefinite"/></circle>
+    <circle cx="168" cy="590" r="1.1"><animate attributeName="opacity" values=".6;.1;.6" dur="6.1s" repeatCount="indefinite"/></circle>
+  </g>
+</symbol>
 </symbol>
 `);
 
@@ -1967,7 +2475,7 @@ SPRITE_PARTS.push(`
     <circle cx="300" cy="700" r="144" stroke-dasharray="3 14" stroke-opacity=".16"/>
   </g>
   <path d="M238 350 C192 412 178 530 188 696 L232 760 Q300 790 368 760 L412 696 C422 530 408 412 362 350 Z" fill="#16111f" opacity=".6"/>
-  <use href="#wxCore"/>
+  <use href="#wxCoreStill"/>
   <path d="M266 212 C276 188 320 182 334 210 Q300 196 266 212 Z" fill="#f3ead8" opacity=".2"/>
   <path d="M260 214 Q300 198 340 214 L342 232 Q300 218 258 232 Z" fill="#21172c" stroke="var(--el)" stroke-opacity=".55" stroke-width="1.2"/>
   <path d="M338 224 C364 220 380 234 392 254 C376 250 360 254 344 266 C352 250 348 236 338 224 Z" fill="var(--el)" opacity=".3" stroke="var(--el)" stroke-opacity=".5" stroke-width="1"/>
@@ -1975,19 +2483,26 @@ SPRITE_PARTS.push(`
   <path d="M252 340 Q300 324 348 340 L360 464 L334 478 L300 462 L266 478 L240 464 Z" fill="#1c1526" stroke="#d8b56a" stroke-opacity=".35" stroke-width="1.3"/>
   <path d="M300 344 L300 458" stroke="#d8b56a" stroke-opacity=".25" stroke-width="1"/>
   <path d="M264 354 L279 340 M336 354 L321 340" stroke="var(--el)" stroke-opacity=".5" stroke-width="1.2"/>
-  <path d="M246 348 C216 356 194 392 178 444 C166 486 154 524 146 560 C140 592 142 624 154 644 C170 662 194 654 200 634 C206 612 196 582 200 548 C208 498 222 438 250 390 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1.2"/>
-  <path d="M354 348 C384 356 406 392 422 444 C434 486 446 524 454 560 C460 592 458 624 446 644 C430 662 406 654 400 634 C394 612 404 582 400 548 C392 498 378 438 350 390 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1.2"/>
-  <g fill="none" stroke="#9d785f" stroke-opacity=".35" stroke-width=".9">
-    <path d="M226 392 Q208 420 202 458 M226 392 Q216 430 212 470"/>
-    <path d="M374 392 Q392 420 398 458 M374 392 Q384 430 388 470"/>
+  <g fill="none" stroke="var(--el)" stroke-opacity=".25" stroke-width="1.1" stroke-linecap="round">
+    <path d="M432 404 C452 392 470 392 486 404"><animate attributeName="opacity" values=".1;.5;.1" dur="2.8s" repeatCount="indefinite"/></path>
+    <path d="M440 426 C466 418 484 424 496 438"><animate attributeName="opacity" values=".4;.1;.4" dur="3.4s" repeatCount="indefinite"/></path>
+    <path d="M434 454 C458 456 474 466 482 482"><animate attributeName="opacity" values=".15;.45;.15" dur="3.1s" repeatCount="indefinite"/></path>
   </g>
-  <g stroke="#d8b56a" stroke-opacity=".65" stroke-width="3" fill="none">
-    <path d="M164 540 L194 552 M158 558 L196 568 M152 576 L196 586 M148 594 L198 602"/>
-    <path d="M436 540 L406 552 M442 558 L404 568 M448 576 L404 586 M452 594 L402 602"/>
-  </g>
-  <path d="M140 632 C144 656 172 668 190 650 C204 636 200 608 186 596 C166 578 136 602 140 632 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".5" stroke-width="1.2"/>
-  <path d="M460 632 C456 656 428 668 410 650 C396 636 400 608 414 596 C434 578 464 602 460 632 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".5" stroke-width="1.2"/>
-  <path d="M150 620 Q168 628 186 618 M450 620 Q432 628 414 618" fill="none" stroke="#9d785f" stroke-opacity=".5" stroke-width="1"/>
+  <!-- guard arm -->
+  <path d="M252 350 C228 364 214 396 212 430 L230 444 C236 414 244 390 260 372 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1.1"/>
+  <path d="M212 432 C210 408 216 388 228 374 L248 386 C238 400 232 420 232 440 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1.1"/>
+  <path d="M230 370 C228 354 238 342 252 342 C268 342 277 354 274 370 C272 388 262 397 250 396 C238 395 231 384 230 370 Z" fill="#2a1a29" stroke="var(--el)" stroke-opacity=".55" stroke-width="1.3"/>
+  <path d="M236 360 C242 350 256 348 264 356" fill="none" stroke="#d8b56a" stroke-opacity=".5" stroke-width="1.2"/>
+  <path d="M244 392 C238 386 237 378 241 372" fill="none" stroke="#d8b56a" stroke-opacity=".45" stroke-width="1"/>
+  <!-- straight punch, foreshortened -->
+  <path d="M348 352 C372 362 390 384 400 410 L386 424 C374 400 360 382 342 372 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1.1"/>
+  <path d="M390 416 C404 420 414 436 418 452 L402 466 C396 450 386 438 376 430 Z" fill="url(#wxSkin)" stroke="#9d785f" stroke-opacity=".45" stroke-width="1.1"/>
+  <path d="M404 438 C402 420 412 408 430 408 C448 408 458 420 456 438 C454 458 442 468 428 466 C414 464 406 454 404 438 Z" fill="#2a1a29" stroke="var(--el)" stroke-opacity=".65" stroke-width="1.4"/>
+  <path d="M412 428 C420 418 434 418 442 426" fill="none" stroke="#d8b56a" stroke-opacity=".6" stroke-width="1.3"/>
+  <path d="M416 462 C424 456 434 456 442 462" fill="none" stroke="#d8b56a" stroke-opacity=".35" stroke-width="1"/>
+  <path d="M398 444 L386 442 M400 454 L388 454" stroke="#d8b56a" stroke-opacity=".6" stroke-width="2.2"/>
+  <path d="M452 452 C470 456 482 468 488 484" fill="none" stroke="var(--el)" stroke-opacity=".35" stroke-width="1.4"><animate attributeName="opacity" values=".15;.7;.15" dur="2.6s" repeatCount="indefinite"/></path>
+  <path d="M446 470 C462 476 472 488 476 502" fill="none" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M248 472 Q300 494 352 472 L356 508 Q300 530 244 508 Z" fill="#21182f" stroke="url(#wxGold)" stroke-opacity=".55" stroke-width="1.2"/>
   <path d="M260 508 L250 720 Q300 744 350 720 L340 508 Q300 524 260 508 Z" fill="#15101d" opacity=".8"/>
   <path d="M280 516 L274 700 M320 516 L326 700" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
@@ -2185,7 +2700,7 @@ SPRITE_PARTS.push(`
     <animateTransform attributeName="transform" type="translate" values="86 430;86 420;86 430" dur="6s" repeatCount="indefinite"/>
   </g>
   <path d="M226 342 C190 410 180 530 190 690 L216 744 Q258 766 300 770 Q342 766 384 744 L410 690 C420 530 410 410 374 342 Z" fill="#15101f" opacity=".6"/>
-  <use href="#wxCore"/>
+  <use href="#wxCoreStill"/>
   <path d="M260 204 C238 236 240 300 246 360 L262 422 L278 352 C274 300 276 246 288 214 Z" fill="#1a1325" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M340 204 C362 236 360 300 354 360 L338 422 L322 352 C326 300 324 246 312 214 Z" fill="#1a1325" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M300 202 C322 202 338 216 340 240 C342 264 326 280 300 282 Z" fill="#e8dcc4" opacity=".88" stroke="#b99b65" stroke-width="1.2"/>
@@ -2221,7 +2736,7 @@ SPRITE_PARTS.push(`
     <path d="M176 500 Q116 540 144 606" opacity=".5"/>
   </g>
   <path d="M226 342 C190 410 182 530 192 690 L218 744 Q258 766 300 770 Q342 766 382 744 L408 690 C418 530 410 410 374 342 Z" fill="#161220" opacity=".5"/>
-  <use href="#wxCore"/>
+  <use href="#wxCoreStill"/>
   <path d="M258 202 C236 242 238 312 244 380 L260 450 L276 366 C272 306 276 248 288 214 Z" fill="#1a1325" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M342 202 C364 242 362 312 356 380 L340 450 L324 366 C328 306 324 248 312 214 Z" fill="#1a1325" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M276 190 Q300 162 324 190 Q312 204 300 204 Q288 204 276 190 Z" fill="#171020"/>
@@ -2278,7 +2793,7 @@ SPRITE_PARTS.push(`
     <circle cx="444" cy="470" r="4" opacity=".25"/><circle cx="462" cy="500" r="2" opacity=".4"/>
   </g>
   <path d="M226 342 C190 410 182 530 192 690 L218 744 Q258 766 300 770 Q342 766 382 744 L408 690 C418 530 410 410 374 342 Z" fill="#15111f" opacity=".5"/>
-  <use href="#wxCore"/>
+  <use href="#wxCoreStill"/>
   <path d="M262 202 C244 236 246 298 252 350 L264 392 L280 334 C276 288 278 240 288 214 Z" fill="#1c1528" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M338 202 C356 236 354 298 348 350 L336 392 L320 334 C324 288 322 240 312 214 Z" fill="#1c1528" stroke="var(--el)" stroke-opacity=".2" stroke-width="1"/>
   <path d="M282 190 Q300 160 318 190 Q310 202 300 202 Q290 202 282 190 Z" fill="#171020" stroke="var(--el)" stroke-opacity=".3"/>
@@ -2305,6 +2820,185 @@ SPRITE_PARTS.push(`
     <path d="M134 380 Q156 350 180 360 Q168 382 146 384 Q158 402 142 410 Q132 394 134 380 Z"><animateTransform attributeName="transform" type="translate" values="0 0;5 -8;0 0" dur="7s" repeatCount="indefinite"/></path>
     <path d="M180 360 L198 348" stroke-opacity=".25"/>
   </g>
+
+<!-- 19 · MECHANIST -->
+<symbol id="ch-mechanist" viewBox="0 0 600 820">
+  <!-- gear halo -->
+  <g transform="translate(474 286)" opacity=".8">
+    <g fill="none" stroke="var(--el)" stroke-opacity=".55" stroke-width="1.3">
+      <circle r="92"/><circle r="70"/>
+      <g stroke-width="10" stroke-opacity=".28">
+        <path d="M0 -98 L0 -84" transform="rotate(0)"/><path d="M0 -98 L0 -84" transform="rotate(36)"/><path d="M0 -98 L0 -84" transform="rotate(72)"/><path d="M0 -98 L0 -84" transform="rotate(108)"/><path d="M0 -98 L0 -84" transform="rotate(144)"/><path d="M0 -98 L0 -84" transform="rotate(180)"/><path d="M0 -98 L0 -84" transform="rotate(216)"/><path d="M0 -98 L0 -84" transform="rotate(252)"/><path d="M0 -98 L0 -84" transform="rotate(288)"/><path d="M0 -98 L0 -84" transform="rotate(324)"/>
+      </g>
+      <g stroke-opacity=".22" stroke-width="1">
+        <path d="M0 -66 L57 33 L-57 33 Z"/><path d="M0 66 L57 -33 L-57 -33 Z"/>
+      </g>
+      <circle r="13" fill="#0b0912" fill-opacity=".8" stroke="var(--el)" stroke-opacity=".5"/>
+      <circle r="4" fill="var(--el)" opacity=".8"/>
+    </g>
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="80s" repeatCount="indefinite"/>
+  </g>
+  <g transform="translate(142 348) scale(.55)" opacity=".58" fill="none" stroke="var(--el)" stroke-opacity=".4" stroke-width="2">
+    <circle r="52"/><circle r="31"/>
+    <g stroke-width="16" stroke-opacity=".3"><path d="M0 -58 L0 -46" transform="rotate(0)"/><path d="M0 -58 L0 -46" transform="rotate(45)"/><path d="M0 -58 L0 -46" transform="rotate(90)"/><path d="M0 -58 L0 -46" transform="rotate(135)"/><path d="M0 -58 L0 -46" transform="rotate(180)"/><path d="M0 -58 L0 -46" transform="rotate(225)"/><path d="M0 -58 L0 -46" transform="rotate(270)"/><path d="M0 -58 L0 -46" transform="rotate(315)"/></g>
+    <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="55s" repeatCount="indefinite"/>
+  </g>
+  <!-- back-mounted boiler -->
+  <g transform="translate(362 344)">
+    <rect x="0" y="0" width="58" height="96" rx="14" fill="#2c2333" stroke="url(#wxGold)" stroke-opacity=".6" stroke-width="1.4"/>
+    <path d="M10 16 L48 16 M10 34 L48 34" stroke="var(--el)" stroke-opacity=".35" stroke-width="1"/>
+    <circle cx="29" cy="62" r="14" fill="#0c0a12" stroke="var(--el)" stroke-opacity=".55" stroke-width="1.2"/>
+    <path d="M29 54 L29 70 M21 62 L37 62" stroke="#d8b56a" stroke-opacity=".65" stroke-width="1.3"/>
+    <path d="M58 24 C76 26 84 40 82 58 C80 74 86 86 98 92" fill="none" stroke="#8a6a45" stroke-width="4"/>
+    <path d="M58 24 C76 26 84 40 82 58 C80 74 86 86 98 92" fill="none" stroke="var(--el)" stroke-opacity=".32" stroke-width="1.1"/>
+  </g>
+  <use href="#wxCore"/>
+  <!-- monocle -->
+  <g>
+    <circle cx="318" cy="253" r="15" fill="none" stroke="url(#wxGold)" stroke-width="1.8"/>
+    <path d="M332 258 C342 266 344 282 338 294" fill="none" stroke="#d8b56a" stroke-opacity=".6" stroke-width="1"/>
+    <circle cx="338" cy="296" r="2.4" fill="var(--el)" opacity=".8"/>
+    <path d="M308 246 C312 240 320 238 326 242" fill="none" stroke="#f3ead8" stroke-opacity=".35" stroke-width="1"/>
+  </g>
+  <!-- harness -->
+  <path d="M250 340 L300 376 L350 340 L356 372 L300 410 L244 372 Z" fill="none" stroke="url(#wxGold)" stroke-opacity=".55" stroke-width="1.4"/>
+  <path d="M246 480 Q300 502 354 480" fill="none" stroke="#d8b56a" stroke-opacity=".35" stroke-width="1.2"/>
+  <!-- clockwork bird on the raised hand -->
+  <g transform="translate(138 320)">
+    <path d="M12 42 C6 26 18 12 36 12 C52 12 62 22 62 36 C62 46 54 54 40 56 L18 54 Z" fill="#3b3049" stroke="url(#wxGold)" stroke-opacity=".7" stroke-width="1.3"/>
+    <path d="M54 22 C64 12 78 12 86 22 C76 22 68 28 64 38 Z" fill="#352a44" stroke="var(--el)" stroke-opacity=".5" stroke-width="1.1"/>
+    <path d="M64 36 L74 40 L64 44 Z" fill="#d8b56a" opacity=".8"/>
+    <circle cx="64" cy="25" r="2.2" fill="var(--el)"><animate attributeName="opacity" values=".4;1;.4" dur="2.8s" repeatCount="indefinite"/></circle>
+    <g fill="none" stroke="var(--el)" stroke-opacity=".45" stroke-width="1">
+      <circle cx="34" cy="32" r="11"/><circle cx="34" cy="32" r="4"/>
+      <path d="M34 21 L34 43 M23 32 L45 32"/>
+    </g>
+    <path d="M14 48 L4 60 M26 54 L24 68 M38 56 L40 70" stroke="#d8b56a" stroke-opacity=".45" stroke-width="1.3"/>
+    <path d="M88 24 L98 20 L94 30" fill="none" stroke="var(--el)" stroke-opacity=".35" stroke-width="1"/>
+  </g>
+  <!-- tool belt -->
+  <g transform="translate(246 512)">
+    <rect x="0" y="0" width="28" height="18" rx="3" fill="#1b1524" stroke="url(#wxGold)" stroke-opacity=".55" stroke-width="1"/>
+    <path d="M8 18 L4 54 L14 54 L18 18" fill="#2c2333" stroke="#d8b56a" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M0 54 Q9 62 18 54" fill="none" stroke="var(--el)" stroke-opacity=".45" stroke-width="1.3"/>
+    <circle cx="24" cy="8" r="3" fill="none" stroke="#d8b56a" stroke-opacity=".6"/>
+  </g>
+  <g transform="translate(338 500)">
+    <path d="M0 8 L18 8 L18 44 L26 44 L26 54 L-8 54 L-8 44 L0 44 Z" fill="#241d30" stroke="#d8b56a" stroke-opacity=".5" stroke-width="1.1"/>
+    <circle cx="9" cy="22" r="4" fill="none" stroke="var(--el)" stroke-opacity=".5"/>
+  </g>
+  <!-- blueprint scroll -->
+  <g transform="translate(80 636) rotate(-6)">
+    <rect width="126" height="86" rx="3" fill="#11202a" fill-opacity=".75" stroke="var(--el)" stroke-opacity=".32" stroke-width="1"/>
+    <rect x="7" y="7" width="112" height="72" fill="none" stroke="#d8b56a" stroke-opacity=".18"/>
+    <g fill="none" stroke="var(--el)" stroke-opacity=".55" stroke-width="1">
+      <circle cx="43" cy="42" r="18"/><circle cx="43" cy="42" r="7"/>
+      <path d="M43 24 L43 60 M25 42 L61 42"/>
+      <path d="M78 28 L104 28 L104 60 L78 60 Z"/><path d="M78 44 L104 44 M90 28 L90 60"/>
+    </g>
+    <path d="M0 0 L0 86 M126 0 L126 86" stroke="#d8b56a" stroke-opacity=".4" stroke-width="2.4"/>
+  </g>
+  <!-- steam / sparks -->
+  <g fill="none" stroke="var(--el)" stroke-linecap="round">
+    <path d="M412 430 C426 414 426 398 416 384" stroke-opacity=".28" stroke-width="2"><animate attributeName="opacity" values=".1;.5;.1" dur="4.4s" repeatCount="indefinite"/></path>
+    <path d="M430 450 C444 430 444 412 434 396" stroke-opacity=".2" stroke-width="1.6"><animate attributeName="opacity" values=".4;.08;.4" dur="5.2s" repeatCount="indefinite"/></path>
+  </g>
+  <g fill="var(--el)">
+    <circle cx="164" cy="252" r="1.7"><animate attributeName="opacity" values=".1;.9;.1" dur="4s" repeatCount="indefinite"/></circle>
+    <circle cx="450" cy="478" r="1.3"><animate attributeName="opacity" values=".8;.1;.8" dur="5s" repeatCount="indefinite"/></circle>
+    <circle cx="134" cy="560" r="1.2"><animate attributeName="opacity" values=".2;.7;.2" dur="4.6s" repeatCount="indefinite"/></circle>
+    <path d="M454 540 L460 550 L470 553 L460 556 L454 566 L448 556 L438 553 L448 550 Z" opacity=".55"><animate attributeName="opacity" values=".2;.8;.2" dur="3.8s" repeatCount="indefinite"/></path>
+  </g>
+</symbol>
+
+<!-- 20 · MERCHANT -->
+<symbol id="ch-merchant" viewBox="0 0 600 820">
+  <!-- travel bundle behind left shoulder -->
+  <g transform="translate(184 308) rotate(-8)">
+    <path d="M0 26 C-4 8 10 -6 34 -6 C58 -6 72 8 68 26 L64 58 C58 72 10 72 4 58 Z" fill="#241c2c" stroke="#d8b56a" stroke-opacity=".4" stroke-width="1.2"/>
+    <path d="M4 22 Q34 8 64 22" fill="none" stroke="var(--el)" stroke-opacity=".35" stroke-width="1.2"/>
+    <path d="M10 58 Q34 66 58 58" fill="none" stroke="#d8b56a" stroke-opacity=".3" stroke-width="1"/>
+    <path d="M14 0 L14 -12 M54 0 L54 -12" stroke="#d8b56a" stroke-opacity=".45" stroke-width="2"/>
+  </g>
+  <!-- caravan silhouette -->
+  <g transform="translate(58 688)" fill="#0b0910" stroke="var(--el)" stroke-opacity=".22" stroke-width="1.2" opacity=".85">
+    <path d="M20 76 C18 58 24 42 40 34 C46 18 60 16 68 30 C76 18 92 22 94 38 C108 44 114 58 110 76 L102 76 L98 92 L88 92 L86 76 L44 76 L40 92 L30 92 L30 76 Z"/>
+    <path d="M40 34 C34 22 40 8 52 8 C48 20 50 30 58 38" fill="none" stroke="var(--el)" stroke-opacity=".3"/>
+    <path d="M94 40 L108 34 L110 48" fill="none" stroke="#d8b56a" stroke-opacity=".3"/>
+    <path d="M68 30 L68 76 M86 40 L86 76" stroke="var(--el)" stroke-opacity=".14"/>
+    <rect x="54" y="42" width="24" height="18" rx="2" fill="none" stroke="#d8b56a" stroke-opacity=".25"/>
+  </g>
+  <!-- folding fan in the raised hand -->
+  <g transform="translate(190 400)">
+    <path d="M0 0 L-126 -63 A140 140 0 0 1 -84 -118 Z" fill="#261a2b" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.2"/>
+    <path d="M0 0 L-84 -118 A140 140 0 0 1 -28 -136 Z" fill="var(--el)" fill-opacity=".13" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.2"/>
+    <path d="M0 0 L-28 -136 A140 140 0 0 1 30 -136 Z" fill="#261a2b" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.2"/>
+    <path d="M0 0 L30 -136 A140 140 0 0 1 80 -118 Z" fill="var(--el)" fill-opacity=".13" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.2"/>
+    <path d="M0 0 L80 -118 L104 -98 L0 0 Z" fill="#261a2b" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.2"/>
+    <g stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.1">
+      <path d="M0 0 L-126 -63"/><path d="M0 0 L-106 -92"/><path d="M0 0 L-84 -118"/><path d="M0 0 L-56 -130"/><path d="M0 0 L-28 -136"/><path d="M0 0 L0 -138"/><path d="M0 0 L30 -136"/><path d="M0 0 L56 -130"/><path d="M0 0 L80 -118"/><path d="M0 0 L104 -98"/>
+    </g>
+    <path d="M-126 -63 A140 140 0 0 1 104 -98" fill="none" stroke="var(--el)" stroke-opacity=".3" stroke-width="1.4"/>
+    <circle r="7" fill="url(#wxGold)"/>
+    <path d="M0 8 C-4 24 4 34 10 42" fill="none" stroke="var(--el)" stroke-opacity=".5" stroke-width="1.2"/>
+    <circle cx="10" cy="46" r="3" fill="var(--el)" opacity=".7"/>
+  </g>
+  <use href="#wxCore"/>
+  <!-- sash / coin strings -->
+  <path d="M252 486 Q300 506 348 486 L352 520 Q300 540 248 520 Z" fill="#1d1526" stroke="#d8b56a" stroke-opacity=".5" stroke-width="1.2"/>
+  <g stroke="#d8b56a" stroke-opacity=".45" stroke-width=".8">
+    <path d="M262 524 C258 552 258 580 264 610"/>
+    <path d="M282 528 C280 556 282 584 288 614"/>
+  </g>
+  <g fill="url(#wxGold)" stroke="#8a6534" stroke-opacity=".5" stroke-width=".5">
+    <g transform="translate(262 540)"><circle r="7"/><rect x="-2" y="-2" width="4" height="4" fill="#1b1420"/></g>
+    <g transform="translate(259 566)"><circle r="7"/><rect x="-2" y="-2" width="4" height="4" fill="#1b1420"/></g>
+    <g transform="translate(263 592)"><circle r="7"/><rect x="-2" y="-2" width="4" height="4" fill="#1b1420"/></g>
+    <g transform="translate(282 546) scale(.85)"><circle r="7"/><rect x="-2" y="-2" width="4" height="4" fill="#1b1420"/></g>
+    <g transform="translate(284 574) scale(.85)"><circle r="7"/><rect x="-2" y="-2" width="4" height="4" fill="#1b1420"/></g>
+    <g transform="translate(288 602) scale(.85)"><circle r="7"/><rect x="-2" y="-2" width="4" height="4" fill="#1b1420"/></g>
+  </g>
+  <!-- abacus -->
+  <g transform="translate(410 442) rotate(3)">
+    <rect width="112" height="86" rx="5" fill="#1a1424" stroke="#d8b56a" stroke-opacity=".55" stroke-width="1.3"/>
+    <rect x="6" y="6" width="100" height="74" fill="none" stroke="var(--el)" stroke-opacity=".2"/>
+    <g stroke="#d8b56a" stroke-opacity=".35" stroke-width="1"><path d="M16 24 L104 24 M16 44 L104 44 M16 64 L104 64"/></g>
+    <g fill="var(--el)">
+      <circle cx="26" cy="24" r="4"/><circle cx="38" cy="24" r="4"/><circle cx="54" cy="24" r="4"/>
+      <circle cx="72" cy="44" r="4"/><circle cx="84" cy="44" r="4"/><circle cx="96" cy="44" r="4"/>
+      <circle cx="30" cy="64" r="4"/><circle cx="46" cy="64" r="4"/><circle cx="62" cy="64" r="4"/>
+    </g>
+    <g fill="#d8b56a"><circle cx="76" cy="24" r="3"/><circle cx="40" cy="44" r="3"/><circle cx="84" cy="64" r="3"/></g>
+  </g>
+  <!-- balance scale -->
+  <g transform="translate(424 626)">
+    <path d="M31 76 L31 12 M10 76 L52 76" stroke="url(#wxGold)" stroke-width="2.2"/>
+    <path d="M8 16 L54 16" stroke="#d8b56a" stroke-opacity=".7" stroke-width="1.6"/>
+    <path d="M8 16 L0 40 M54 16 L62 40" stroke="#d8b56a" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M-16 40 Q0 54 16 40 Z" fill="#1b1424" stroke="var(--el)" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M46 40 Q62 54 78 40 Z" fill="#1b1424" stroke="var(--el)" stroke-opacity=".45" stroke-width="1"/>
+    <circle cx="31" cy="12" r="4" fill="url(#wxGold)"/>
+    <path d="M31 76 Q60 82 76 74" fill="none" stroke="var(--el)" stroke-opacity=".25" stroke-width="1"/>
+  </g>
+  <!-- ledger / map -->
+  <g transform="translate(92 612) rotate(-5)">
+    <path d="M0 8 Q28 -4 56 8 L56 74 Q28 62 0 74 Z" fill="#e8dcc4" opacity=".14" stroke="#d8b56a" stroke-opacity=".35" stroke-width="1"/>
+    <path d="M8 22 Q24 16 42 22 M8 34 Q24 28 42 34 M8 46 Q24 40 42 46" fill="none" stroke="var(--el)" stroke-opacity=".4" stroke-width=".9"/>
+    <path d="M6 60 C18 50 32 56 46 46" fill="none" stroke="var(--el)" stroke-opacity=".5" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="46" cy="46" r="2.5" fill="#d8b56a" opacity=".7"/>
+  </g>
+  <!-- wind & coins -->
+  <g fill="none" stroke="var(--el)" stroke-linecap="round" stroke-opacity=".28">
+    <path d="M144 318 C120 338 108 366 108 396" stroke-width="1.2"><animate attributeName="opacity" values=".1;.45;.1" dur="5.8s" repeatCount="indefinite"/></path>
+    <path d="M462 360 C488 386 500 420 496 452" stroke-width="1"><animate attributeName="opacity" values=".35;.08;.35" dur="6.6s" repeatCount="indefinite"/></path>
+  </g>
+  <g fill="var(--el)">
+    <circle cx="160" cy="260" r="1.6"><animate attributeName="opacity" values=".1;.8;.1" dur="4.2s" repeatCount="indefinite"/></circle>
+    <circle cx="454" cy="300" r="1.2"><animate attributeName="opacity" values=".7;.1;.7" dur="5.4s" repeatCount="indefinite"/></circle>
+    <circle cx="122" cy="500" r="1.3"><animate attributeName="opacity" values=".2;.7;.2" dur="4.8s" repeatCount="indefinite"/></circle>
+    <path d="M400 390 L404 398 L412 402 L404 406 L400 414 L396 406 L388 402 L396 398 Z" opacity=".45"><animate attributeName="opacity" values=".2;.7;.2" dur="4.4s" repeatCount="indefinite"/></path>
+  </g>
+</symbol>
 </symbol>
 </svg>
 `);
@@ -2326,7 +3020,8 @@ SPRITE_PARTS.push(`
   const CLASS_GLYPHS = {
     warrior: '战', mage: '法', witch: '巫', elf: '灵', rogue: '盗', paladin: '圣',
     druid: '德', bard: '诗', sword: '剑', boxer: '拳', talisman: '符', alchemist: '丹',
-    tamer: '御', puppeteer: '傀', zither: '琴', painter: '画'
+    tamer: '御', puppeteer: '傀', zither: '琴', painter: '画',
+    ranger: '游', necromancer: '冥', mechanist: '机', merchant: '商'
   };
 
   const TOP_VERDICTS = {
@@ -2386,22 +3081,26 @@ SPRITE_PARTS.push(`
 
   /* per-class null mean / sd of the raw match, measured over uniform random answers */
   const CLASS_NULL = {
-    warrior:   { m: 0.28306, sd: 0.49591 },
-    mage:      { m: 0.28331, sd: 0.39735 },
-    witch:     { m: 0.28335, sd: 0.53959 },
-    elf:       { m: 0.28305, sd: 0.35076 },
-    rogue:     { m: 0.28374, sd: 0.40390 },
-    paladin:   { m: 0.28301, sd: 0.44592 },
-    druid:     { m: 0.28308, sd: 0.34513 },
-    bard:      { m: 0.28314, sd: 0.47434 },
-    sword:     { m: 0.28290, sd: 0.39551 },
-    boxer:     { m: 0.28266, sd: 0.44704 },
-    talisman:  { m: 0.28321, sd: 0.52628 },
-    alchemist: { m: 0.28255, sd: 0.42642 },
-    tamer:     { m: 0.28329, sd: 0.55389 },
-    puppeteer: { m: 0.28298, sd: 0.37052 },
-    zither:    { m: 0.28333, sd: 0.50541 },
-    painter:   { m: 0.28283, sd: 0.43832 }
+    warrior:   { m: 0.28264, sd: 0.48112 },
+    mage:      { m: 0.28145, sd: 0.37489 },
+    witch:     { m: 0.28167, sd: 0.52186 },
+    elf:       { m: 0.28278, sd: 0.36050 },
+    rogue:     { m: 0.28194, sd: 0.39526 },
+    paladin:   { m: 0.28305, sd: 0.44673 },
+    druid:     { m: 0.28274, sd: 0.35539 },
+    bard:      { m: 0.28138, sd: 0.47064 },
+    ranger:    { m: 0.28219, sd: 0.35155 },
+    necromancer:{ m: 0.28223, sd: 0.39969 },
+    sword:     { m: 0.28314, sd: 0.39804 },
+    boxer:     { m: 0.28241, sd: 0.45887 },
+    talisman:  { m: 0.28240, sd: 0.51009 },
+    alchemist: { m: 0.28291, sd: 0.43484 },
+    tamer:     { m: 0.28256, sd: 0.54396 },
+    puppeteer: { m: 0.28302, sd: 0.38296 },
+    zither:    { m: 0.28229, sd: 0.49590 },
+    painter:   { m: 0.28184, sd: 0.45149 },
+    mechanist: { m: 0.28184, sd: 0.40243 },
+    merchant:  { m: 0.28144, sd: 0.34357 }
   };
 
   function normalCDF(z) {
@@ -2437,7 +3136,7 @@ SPRITE_PARTS.push(`
   function renderGallery(filter = 'all') {
     const grid = $('#galleryGrid');
     grid.innerHTML = ALL_CLASSES.map((c, i) => {
-      const group = i < 8 ? 'west' : 'east';
+      const group = CLASSES_A.some(x => x.id === c.id) ? 'west' : 'east';
       if (filter !== 'all' && group !== filter) return '';
       const keys = Object.keys(c.variants);
       const mainKey = keys[0];
@@ -2555,7 +3254,7 @@ SPRITE_PARTS.push(`
       <div class="calc">
         <div class="ring"><b>相</b></div>
         <h2>正在推演你的本命…</h2>
-        <p>十二道刻度归位，四十八相正在显影。<br>请稍候片刻。</p>
+        <p>二十五问归位，六十相正在显影。<br>请稍候片刻。</p>
       </div>`;
     setTimeout(() => {
       const result = computeResult(quiz.answers);
@@ -2648,6 +3347,8 @@ SPRITE_PARTS.push(`
     activeVariantKey = result.variant.key;
     renderResult(result);
     showScreen('result');
+    initArtMotes();
+    requestAnimationFrame(() => revealResult());
     // ensure fonts settle then trigger bar animations? they animate on insertion
     if (opts.fresh) {
       setTimeout(() => {
@@ -2685,7 +3386,7 @@ SPRITE_PARTS.push(`
     $('#resFactsRole').textContent = c.role;
     $('#resWeapon').textContent = c.weapon;
     $('#resRelic').textContent = c.relic;
-    $('#resFootNo').textContent = `NO. ${String(roleIndex).padStart(2, '0')} / 48`;
+    $('#resFootNo').textContent = `NO. ${String(roleIndex).padStart(2, '0')} / ${ALL_CLASSES.length * 3}`;
 
     const top3 = r.sortedDims.slice(0, 3);
     $('#resSig').innerHTML = top3.map(d => `<span>${d.n} · ${d.v}</span>`).join('');
@@ -2771,6 +3472,10 @@ SPRITE_PARTS.push(`
     $('#vsAction').textContent = isActual
       ? '这是你的本命相，也是你最自然的状态。'
       : `你更常显化的是「${r.variant.data.name}」。这一相，是你也可以调用的另一张面孔。`;
+    const stage = $('#variantStage');
+    stage.classList.remove('swap');
+    void stage.offsetWidth;
+    stage.classList.add('swap');
   }
 
   function radarPoint(cx, cy, r, i, n = 12) {
@@ -2829,6 +3534,365 @@ SPRITE_PARTS.push(`
     }).join('');
   }
 
+
+  /* ---------------- share poster ---------------- */
+  const ELEMENT_DARK = {
+    wind:'#2f8f7a', thunder:'#6d4aa8', ice:'#3f7f9e', fire:'#a84127', stone:'#8a6534',
+    moon:'#7057a8', forest:'#4f8a42', shadow:'#564477', light:'#a88434', water:'#35739e'
+  };
+
+  function wrapCJK(text, perLine = 27, maxLines = 4) {
+    const chars = [...String(text).replace(/\s+/g, ' ').trim()];
+    const lines = [];
+    let line = '';
+    chars.forEach(ch => {
+      if (line.length >= perLine) { lines.push(line); line = ''; }
+      line += ch;
+    });
+    if (line) lines.push(line);
+    if (lines.length > maxLines) {
+      const kept = lines.slice(0, maxLines);
+      kept[maxLines - 1] = kept[maxLines - 1].replace(/[，。；、]$/, '') + '…';
+      return kept;
+    }
+    return lines;
+  }
+
+  function posterRadar(r, cx, cy, R, el) {
+    const axis = i => {
+      const a = -Math.PI / 2 + i * 2 * Math.PI / DIMS.length;
+      return [cx + Math.cos(a) * R, cy + Math.sin(a) * R];
+    };
+    let out = '';
+    [0.25, 0.5, 0.75, 1].forEach(lv => {
+      const pts = DIMS.map((d, i) => axis(i).map((n, j) => (j === 0 ? cx + (n - cx) * lv : cy + (n - cy) * lv).toFixed(1)).join(',')).join(' ');
+      out += `<polygon points="${pts}" fill="none" stroke="#d8b56a" stroke-opacity="${lv === 1 ? '.24' : '.11'}" stroke-width="1"/>`;
+    });
+    DIMS.forEach((d, i) => {
+      const [x, y] = axis(i);
+      out += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#d8b56a" stroke-opacity=".1" stroke-width=".8"/>`;
+    });
+    const vals = DIMS.map((d, i) => {
+      const rr = R * Math.max(0.14, Math.min(1, r.scores[d.k] / 100));
+      const a = -Math.PI / 2 + i * 2 * Math.PI / DIMS.length;
+      return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr];
+    });
+    out += `<polygon points="${vals.map(p => p.map(n => n.toFixed(1)).join(',')).join(' ')}" fill="${el.c}" fill-opacity=".2" stroke="${el.c}" stroke-width="1.8" stroke-linejoin="round"/>`;
+    vals.forEach((p, i) => {
+      out += `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.2" fill="#0b0912" stroke="${el.c}" stroke-width="1.2"/>`;
+      const [x, y] = axis(i);
+      const lx = cx + (x - cx) * 1.28;
+      const ly = cy + (y - cy) * 1.28;
+      const anchor = Math.abs(lx - cx) < 9 ? 'middle' : lx > cx ? 'start' : 'end';
+      out += `<text x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="9" fill="#a99f92" text-anchor="${anchor}">${esc(DIMS[i].n)}</text>`;
+    });
+    out += `<circle cx="${cx}" cy="${cy}" r="14" fill="#0b0912" fill-opacity=".72" stroke="#d8b56a" stroke-opacity=".25"/>`;
+    out += `<text x="${cx}" y="${cy + 5}" font-family="Songti SC,Noto Serif SC,serif" font-size="12" fill="#f2dba6" text-anchor="middle">${esc(r.cls.name[0])}</text>`;
+    return out;
+  }
+
+  function posterSVG(r) {
+    const c = r.cls, v = r.variant, el = v.el, el3 = ELEMENT_DARK[v.key] || el.c;
+    const roleIndex = r.clsIndex * 3 + Object.keys(c.variants).indexOf(v.key) + 1;
+    const no = String(roleIndex).padStart(2, '0');
+    const spriteHTML = SPRITE_MOUNT.innerHTML || '';
+    const defsMatch = spriteHTML.match(/<defs>([\s\S]*?)<\/defs>/);
+    const symbolMatch = spriteHTML.match(new RegExp(`<symbol id="ch-${c.id}"[\\s\\S]*?<\\/symbol>`));
+    const clean = str => String(str)
+      .replace(/var\(--el-2\)/g, el.c2)
+      .replace(/var\(--el-3\)/g, el3)
+      .replace(/var\(--el\)/g, el.c);
+    const defs = clean(defsMatch ? defsMatch[1] : '');
+    const symbol = clean(symbolMatch ? symbolMatch[0] : '');
+    const top3 = r.sortedDims.slice(0, 3);
+    const summary = wrapCJK(c.summary, 27, 4);
+    const glyph = CLASS_GLYPHS[c.id] || c.name[0];
+    const keys = Object.keys(c.variants);
+    const parse = s => `font-family="Songti SC,Noto Serif SC,Source Han Serif SC,serif"`;
+
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1440" viewBox="0 0 1080 1440">`;
+    svg += `<defs>${defs}${symbol}
+      <radialGradient id="wpBg" cx="50%" cy="34%" r="78%">
+        <stop offset="0" stop-color="#1b1428"/><stop offset=".52" stop-color="#0e0b16"/><stop offset="1" stop-color="#07060b"/>
+      </radialGradient>
+      <radialGradient id="wpGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="${el.c}" stop-opacity=".26"/>
+        <stop offset=".55" stop-color="${el.c}" stop-opacity=".09"/>
+        <stop offset="1" stop-color="${el.c}" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="wpFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#07060b" stop-opacity="0"/>
+        <stop offset=".62" stop-color="#07060b" stop-opacity=".88"/>
+        <stop offset="1" stop-color="#07060b" stop-opacity=".99"/>
+      </linearGradient>
+      <linearGradient id="wpGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f8e8bd"/><stop offset=".55" stop-color="#d8b56a"/><stop offset="1" stop-color="#96703a"/>
+      </linearGradient>
+      <pattern id="wpStars" width="92" height="92" patternUnits="userSpaceOnUse">
+        <circle cx="14" cy="20" r="1" fill="${el.c2}" opacity=".55"/>
+        <circle cx="68" cy="58" r=".8" fill="#d8b56a" opacity=".4"/>
+        <circle cx="44" cy="82" r=".6" fill="#ffffff" opacity=".25"/>
+      </pattern>
+    </defs>`;
+    svg += `<rect width="1080" height="1440" fill="url(#wpBg)"/>`;
+    svg += `<rect width="1080" height="1440" fill="url(#wpStars)" opacity=".3"/>`;
+    svg += `<ellipse cx="540" cy="470" rx="430" ry="430" fill="url(#wpGlow)"/>`;
+    svg += `<circle cx="540" cy="500" r="322" fill="none" stroke="${el.c}" stroke-opacity=".12"/>`;
+    svg += `<circle cx="540" cy="500" r="286" fill="none" stroke="#d8b56a" stroke-opacity=".17" stroke-dasharray="2 10"/>`;
+    svg += `<circle cx="540" cy="500" r="228" fill="none" stroke="${el.c}" stroke-opacity=".13"/>`;
+    svg += `<text x="906" y="338" ${parse()} font-size="270" fill="${el.c}" fill-opacity=".055" text-anchor="middle">${esc(glyph)}</text>`;
+    svg += `<rect x="26" y="26" width="1028" height="1388" fill="none" stroke="#d8b56a" stroke-opacity=".36"/>`;
+    svg += `<rect x="40" y="40" width="1000" height="1360" fill="none" stroke="#d8b56a" stroke-opacity=".12"/>`;
+    // corners
+    svg += `<g stroke="#d8b56a" stroke-opacity=".85" stroke-width="1.2"><path d="M26 86 L26 26 L86 26"/><path d="M994 26 L1054 26 L1054 86"/><path d="M26 1354 L26 1414 L86 1414"/><path d="M1054 1354 L1054 1414 L994 1414"/></g>`;
+
+    // header
+    svg += `<text x="72" y="68" font-family="SFMono-Regular,Menlo,monospace" font-size="12" letter-spacing="5" fill="#d8b56a">万相谱 · 本命道途</text>`;
+    svg += `<text x="1008" y="68" font-family="SFMono-Regular,Menlo,monospace" font-size="11" letter-spacing="4" fill="#8a8073" text-anchor="end">ORACLE OF STYLES</text>`;
+    svg += `<line x1="72" y1="86" x2="1008" y2="86" stroke="#d8b56a" stroke-opacity=".24"/>`;
+    svg += `<rect x="72" y="106" width="212" height="34" rx="17" fill="${el.c}" fill-opacity=".1" stroke="${el.c}" stroke-opacity=".42"/>`;
+    svg += `<circle cx="94" cy="123" r="4.2" fill="${el.c}"/><circle cx="94" cy="123" r="8" fill="${el.c}" fill-opacity=".18"/>`;
+    svg += `<text x="110" y="128" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" letter-spacing="2" fill="${el.c2}">${esc(el.n)}相 · ${esc(el.en)}</text>`;
+    svg += `<text x="1008" y="128" font-family="SFMono-Regular,Menlo,monospace" font-size="11" letter-spacing="3" fill="#8a8073" text-anchor="end">NO. ${no} / 60</text>`;
+
+    // art
+    svg += `<g transform="translate(240 112)"><use href="#ch-${c.id}" xlink:href="#ch-${c.id}" width="600" height="820"/></g>`;
+    svg += `<rect x="0" y="708" width="1080" height="522" fill="url(#wpFade)"/>`;
+
+    // title block
+    svg += `<text x="72" y="918" ${parse()} font-size="96" font-weight="700" letter-spacing="-3" fill="#f3ead8">${esc(v.data.name)}</text>`;
+    svg += `<text x="74" y="958" font-family="SFMono-Regular,Menlo,monospace" font-size="14" letter-spacing="5" fill="${el.c2}">${esc(el.en + ' ' + c.en)}</text>`;
+    svg += `<text x="72" y="1004" ${parse()} font-size="25" fill="#f2dba6">${esc(c.epithet)}</text>`;
+    svg += `<line x1="72" y1="1026" x2="712" y2="1026" stroke="#d8b56a" stroke-opacity=".28"/>`;
+    svg += `<path d="M72 1023 L78 1026 L72 1029 L66 1026 Z" fill="#d8b56a"/>`;
+    summary.forEach((line, i) => {
+      svg += `<text x="72" y="${1056 + i * 31}" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="19.5" fill="#a99f92">${esc(line)}</text>`;
+    });
+    // top marks
+    svg += `<text x="72" y="1180" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="4" fill="#d8b56a" opacity=".8">TOP MARKS / 前三刻度</text>`;
+    top3.forEach((d, i) => {
+      const x = 72 + i * 196;
+      svg += `<g transform="translate(${x} 1192)"><rect width="186" height="34" rx="17" fill="${el.c}" fill-opacity=".06" stroke="${el.c}" stroke-opacity=".22"/>`;
+      svg += `<text x="15" y="22" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12.5" fill="#e4d9c4">${esc(d.n)}</text>`;
+      svg += `<text x="171" y="22" font-family="SFMono-Regular,Menlo,monospace" font-size="14" fill="${el.c2}" text-anchor="end">${d.v}</text></g>`;
+    });
+
+    // radar panel
+    svg += `<rect x="768" y="1022" width="244" height="214" rx="12" fill="#0b0912" fill-opacity=".55" stroke="#d8b56a" stroke-opacity=".18"/>`;
+    svg += `<text x="790" y="1046" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="3" fill="#d8b56a" opacity=".8">12-AXIS · 命盘</text>`;
+    svg += posterRadar(r, 890, 1146, 62, el);
+
+    // facts
+    svg += `<line x1="72" y1="1252" x2="1008" y2="1252" stroke="#d8b56a" stroke-opacity=".16"/>`;
+    const facts = [
+      ['道途 / PATH', `${c.name} · ${el.n}相`],
+      ['职分 / ROLE', c.role],
+      ['兵刃 / WEAPON', c.weapon],
+      ['信物 / RELIC', c.relic]
+    ];
+    facts.forEach(([label, value], i) => {
+      const x = 72 + i * 234;
+      if (i) svg += `<line x1="${x - 16}" y1="1262" x2="${x - 16}" y2="1312" stroke="#d8b56a" stroke-opacity=".1"/>`;
+      svg += `<text x="${x}" y="1274" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="2.5" fill="#d8b56a" opacity=".72">${esc(label)}</text>`;
+      svg += `<text x="${x}" y="1301" ${parse()} font-size="18" fill="#f3ead8">${esc(value)}</text>`;
+    });
+
+    // variants
+    svg += `<text x="72" y="1340" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="3" fill="#d8b56a" opacity=".72">THREE FACES / 三相</text>`;
+    keys.forEach((k, i) => {
+      const x = 242 + i * 250;
+      const isOn = k === v.key;
+      svg += `<circle cx="${x}" cy="1336" r="3.2" fill="${isOn ? ELEMENTS[k].c : '#6b6157'}"/>`;
+      svg += `<text x="${x + 11}" y="1341" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13.5" fill="${isOn ? el.c2 : '#8a8073'}">${esc(ELEMENTS[k].n + ' · ' + c.variants[k].name)}</text>`;
+    });
+
+    // footer
+    svg += `<line x1="72" y1="1362" x2="1008" y2="1362" stroke="#d8b56a" stroke-opacity=".16"/>`;
+    svg += `<text x="72" y="1394" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="3" fill="#8a8073">WANXIANG PU · STYLE ORACLE</text>`;
+    svg += `<text x="540" y="1394" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="9" letter-spacing="2" fill="#8a8073" text-anchor="middle">自测结果 · 仅供观照</text>`;
+    svg += `<text x="1008" y="1394" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="3" fill="#8a8073" text-anchor="end">NO. ${no} / 60</text>`;
+    svg += `</svg>`;
+    return svg;
+  }
+
+  function svgToPng(svg, scale = 2) {
+    return new Promise((resolve, reject) => {
+      const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = 1080 * scale;
+          canvas.height = 1440 * scale;
+          const ctx = canvas.getContext('2d');
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(url);
+          canvas.toBlob(b => b ? resolve(b) : reject(new Error('PNG encode failed')), 'image/png');
+        } catch (e) {
+          URL.revokeObjectURL(url);
+          reject(e);
+        }
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('SVG load failed')); };
+      img.src = url;
+    });
+  }
+
+  const shareState = { blob: null, url: null, kind: 'png', svg: '', busy: false, focus: null };
+
+  async function renderSharePoster() {
+    if (!currentResult) return;
+    const modal = $('#shareModal');
+    const preview = $('#sharePreview');
+    const dl = $('#btnDownloadPoster');
+    shareState.busy = true;
+    shareState.kind = 'png';
+    shareState.blob = null;
+    if (shareState.url) { URL.revokeObjectURL(shareState.url); shareState.url = null; }
+    dl.disabled = true;
+    dl.innerHTML = '正在生成高清海报…';
+    preview.innerHTML = '<div class="share-loading"><i></i><span>正在绘制你的命盘…</span></div>';
+    const svg = posterSVG(currentResult);
+    shareState.svg = svg;
+    try {
+      const blob = await svgToPng(svg, 2);
+      shareState.blob = blob;
+      shareState.kind = 'png';
+      shareState.url = URL.createObjectURL(blob);
+      preview.innerHTML = `<img src="${shareState.url}" alt="万相谱本命角色海报预览" width="1080" height="1440">`;
+      dl.disabled = false;
+      dl.innerHTML = '下载高清 PNG <span class="arrow">↓</span>';
+    } catch (err) {
+      // graceful fallback: offer the vector poster instead of failing silently
+      shareState.kind = 'svg';
+      shareState.blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      shareState.url = URL.createObjectURL(shareState.blob);
+      preview.innerHTML = `<img src="${shareState.url}" alt="万相谱本命角色海报预览" width="1080" height="1440"><p class="share-fallback">浏览器未能生成位图，可下载 SVG 版本，或长按图片保存。</p>`;
+      dl.disabled = false;
+      dl.innerHTML = '下载 SVG 海报 <span class="arrow">↓</span>';
+    }
+    shareState.busy = false;
+    if (!modal.hidden) $('#shareClose').focus({ preventScroll: true });
+  }
+
+  function openSharePoster() {
+    if (!currentResult) return;
+    const modal = $('#shareModal');
+    if (!modal.hidden) return;
+    shareState.focus = document.activeElement;
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    body.classList.add('share-open');
+    renderSharePoster();
+  }
+
+  function closeSharePoster() {
+    const modal = $('#shareModal');
+    if (modal.hidden) return;
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden', 'true');
+    body.classList.remove('share-open');
+    if (shareState.url) { URL.revokeObjectURL(shareState.url); shareState.url = null; }
+    shareState.blob = null;
+    const back = shareState.focus;
+    if (back && typeof back.focus === 'function') back.focus({ preventScroll: true });
+  }
+
+  function downloadPoster() {
+    if (!shareState.blob) return;
+    const name = `万相谱-${currentResult.variant.data.name}-${currentResult.cls.name}.${shareState.kind}`;
+    const url = URL.createObjectURL(shareState.blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    toast(shareState.kind === 'png' ? '海报已开始下载。' : 'SVG 海报已开始下载。');
+  }
+
+  /* ---------------- reveal / motion ---------------- */
+  const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function motionAllowed() { return !reduceMotion(); }
+
+  function revealResult() {
+    const poster = $('#poster');
+    if (!poster) return;
+    poster.classList.remove('revealed');
+    void poster.offsetWidth;
+    poster.classList.add('revealed');
+    $$('.result-block, .result-closing, .result-footnote').forEach((el, i) => {
+      el.classList.remove('in');
+      el.style.setProperty('--in-delay', `${Math.min(i * 55, 260)}ms`);
+    });
+    if (!('IntersectionObserver' in window)) {
+      $$('.result-block, .result-closing, .result-footnote').forEach(el => el.classList.add('in'));
+      return;
+    }
+    if (!window.__wxRevealObserver) {
+      window.__wxRevealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            window.__wxRevealObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    }
+    $$('.result-block, .result-closing, .result-footnote').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 1.05) {
+        el.classList.add('in');
+      } else {
+        window.__wxRevealObserver.observe(el);
+      }
+    });
+  }
+
+  function initArtMotes() {
+    const mount = $('#artMotes');
+    if (!mount || mount.childElementCount) return;
+    const n = 14;
+    for (let i = 0; i < n; i++) {
+      const s = document.createElement('span');
+      s.style.setProperty('--mx', `${8 + (i * 37) % 84}%`);
+      s.style.setProperty('--my', `${12 + (i * 53) % 76}%`);
+      s.style.setProperty('--md', `${4.5 + (i % 5) * 1.2}s`);
+      s.style.setProperty('--mdl', `${(i % 7) * -1.1}s`);
+      s.style.setProperty('--ms', `${1 + (i % 3) * .8}px`);
+      mount.appendChild(s);
+    }
+  }
+
+  function initPosterParallax() {
+    const poster = $('#poster');
+    const art = $('.poster-art', poster);
+    if (!poster || !art || !motionAllowed()) return;
+    let raf = 0;
+    art.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      const r = art.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - .5;
+      const ny = (e.clientY - r.top) / r.height - .5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        poster.style.setProperty('--px', nx.toFixed(3));
+        poster.style.setProperty('--py', ny.toFixed(3));
+        poster.classList.add('tilting');
+      });
+    });
+    art.addEventListener('pointerleave', () => {
+      poster.style.setProperty('--px', '0');
+      poster.style.setProperty('--py', '0');
+      poster.classList.remove('tilting');
+    });
+  }
+
   /* ---------------- share / copy ---------------- */
   function resultURL() {
     const a = currentResult ? currentResult.answers.join('') : (quiz.answers.every(x => x !== null) ? quiz.answers.join('') : '');
@@ -2883,7 +3947,7 @@ SPRITE_PARTS.push(`
   /* ---------------- URL restore ---------------- */
   function readSharedAnswers() {
     const raw = new URLSearchParams(location.search).get('a');
-    if (!raw || !/^[0-3]{20}$/.test(raw)) return null;
+    if (!raw || !new RegExp(`^[0-3]{${QUESTIONS.length}}$`).test(raw)) return null;
     return raw.split('').map(Number);
   }
 
@@ -2904,8 +3968,13 @@ SPRITE_PARTS.push(`
       startQuiz();
     });
     $('#btnCopy').addEventListener('click', shareResult);
-    $('#btnShare').addEventListener('click', shareResult);
-    $('#btnPrint').addEventListener('click', () => window.print());
+    $('#btnShare').addEventListener('click', openSharePoster);
+    $('#btnPoster').addEventListener('click', openSharePoster);
+    $('#btnDownloadPoster').addEventListener('click', downloadPoster);
+    $('#btnShareCopy').addEventListener('click', shareResult);
+    $('#btnSharePrint').addEventListener('click', () => { closeSharePoster(); setTimeout(() => window.print(), 120); });
+    $('#shareClose').addEventListener('click', closeSharePoster);
+    $$('[data-close-share]').forEach(el => el.addEventListener('click', closeSharePoster));
     $('#resultHome').addEventListener('click', e => {
       e.preventDefault();
       replaceURL(location.pathname);
@@ -2913,6 +3982,7 @@ SPRITE_PARTS.push(`
     });
 
     document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !$('#shareModal').hidden) { closeSharePoster(); return; }
       if (body.dataset.screen !== 'quiz' || quiz.calculating) return;
       const k = e.key.toLowerCase();
       if (k === 'arrowleft' || k === 'backspace') {
@@ -2942,6 +4012,8 @@ SPRITE_PARTS.push(`
     renderDims();
     initGallery();
     initEvents();
+    initArtMotes();
+    initPosterParallax();
     // restore shared result
     const shared = readSharedAnswers();
     if (shared) {
@@ -2950,6 +4022,9 @@ SPRITE_PARTS.push(`
       showResult(r, { fresh: false });
     } else {
       showScreen('intro', { keepScroll: true });
+      if (new URLSearchParams(location.search).has('a')) {
+        toast('这条结果链接似乎不完整，先来重新问道吧。');
+      }
     }
   }
 
