@@ -11,16 +11,16 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="万相谱 · 本命道途">
 <meta property="og:url" content="https://remsey-zhao.github.io/wanxiang-pu/">
-<meta property="og:title" content="万相谱 · 本命道途">
-<meta property="og:description" content="20 个情境，12 条风格维度，48 种幻想角色。测出你以何种方式入世。">
+<meta property="og:title" content="万相谱 · 本命道途｜你是哪一种幻想角色？">
+<meta property="og:description" content="20 个情境，12 条风格维度，48 种幻想角色。用 3 分钟，测出你以何种方式入世。">
 <meta property="og:image" content="https://remsey-zhao.github.io/wanxiang-pu/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="万相谱 · 本命道途：你以何种方式入世？">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="万相谱 · 本命道途">
-<meta name="twitter:description" content="20 个情境，12 条风格维度，48 种幻想角色。测出你以何种方式入世。">
+<meta name="twitter:title" content="万相谱 · 本命道途｜你是哪一种幻想角色？">
+<meta name="twitter:description" content="20 个情境，12 条风格维度，48 种幻想角色。用 3 分钟，测出你以何种方式入世。">
 <meta name="twitter:image" content="https://remsey-zhao.github.io/wanxiang-pu/og.png">
 <meta name="twitter:image:alt" content="万相谱 · 本命道途：你以何种方式入世？">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a12'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23d8b56a' stroke-width='2'/%3E%3Cpath d='M32 15 L37 32 L32 49 L27 32 Z' fill='%23d8b56a'/%3E%3C/svg%3E">
@@ -2520,8 +2520,6 @@ SPRITE_PARTS.push(`
 
   function chooseOption(optIndex) {
     if (quiz.busy || quiz.calculating) return;
-    const current = quiz.answers[quiz.i];
-    if (current !== null) return;
     quiz.answers[quiz.i] = optIndex;
     quiz.busy = true;
     const card = $('.quiz-card');
