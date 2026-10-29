@@ -711,22 +711,15 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
 }
 
 /* ---------- independent Japanese anime motion frames ---------- */
-[data-char]{--active-art:var(--idle-art)}
-[data-char="warrior"]{--idle-art:url("assets/characters/idle/warrior.png");--ready-art:url("assets/characters/ready/warrior.png");--action-art:url("assets/characters/action/warrior.png")}[data-char="mage"]{--idle-art:url("assets/characters/idle/mage.png");--ready-art:url("assets/characters/ready/mage.png");--action-art:url("assets/characters/action/mage.png")}[data-char="witch"]{--idle-art:url("assets/characters/idle/witch.png");--ready-art:url("assets/characters/ready/witch.png");--action-art:url("assets/characters/action/witch.png")}[data-char="elf"]{--idle-art:url("assets/characters/idle/elf.png");--ready-art:url("assets/characters/ready/elf.png");--action-art:url("assets/characters/action/elf.png")}[data-char="rogue"]{--idle-art:url("assets/characters/idle/rogue.png");--ready-art:url("assets/characters/ready/rogue.png");--action-art:url("assets/characters/action/rogue.png")}
-[data-char="paladin"]{--idle-art:url("assets/characters/idle/paladin.png");--ready-art:url("assets/characters/ready/paladin.png");--action-art:url("assets/characters/action/paladin.png")}[data-char="druid"]{--idle-art:url("assets/characters/idle/druid.png");--ready-art:url("assets/characters/ready/druid.png");--action-art:url("assets/characters/action/druid.png")}[data-char="bard"]{--idle-art:url("assets/characters/idle/bard.png");--ready-art:url("assets/characters/ready/bard.png");--action-art:url("assets/characters/action/bard.png")}[data-char="ranger"]{--idle-art:url("assets/characters/idle/ranger.png");--ready-art:url("assets/characters/ready/ranger.png");--action-art:url("assets/characters/action/ranger.png")}[data-char="necromancer"]{--idle-art:url("assets/characters/idle/necromancer.png");--ready-art:url("assets/characters/ready/necromancer.png");--action-art:url("assets/characters/action/necromancer.png")}
-[data-char="sword"]{--idle-art:url("assets/characters/idle/sword.png");--ready-art:url("assets/characters/ready/sword.png");--action-art:url("assets/characters/action/sword.png")}[data-char="boxer"]{--idle-art:url("assets/characters/idle/boxer.png");--ready-art:url("assets/characters/ready/boxer.png");--action-art:url("assets/characters/action/boxer.png")}[data-char="talisman"]{--idle-art:url("assets/characters/idle/talisman.png");--ready-art:url("assets/characters/ready/talisman.png");--action-art:url("assets/characters/action/talisman.png")}[data-char="alchemist"]{--idle-art:url("assets/characters/idle/alchemist.png");--ready-art:url("assets/characters/ready/alchemist.png");--action-art:url("assets/characters/action/alchemist.png")}[data-char="tamer"]{--idle-art:url("assets/characters/idle/tamer.png");--ready-art:url("assets/characters/ready/tamer.png");--action-art:url("assets/characters/action/tamer.png")}
-[data-char="puppeteer"]{--idle-art:url("assets/characters/idle/puppeteer-frame.png");--ready-art:url("assets/characters/ready/puppeteer-frame.png");--action-art:url("assets/characters/action/puppeteer-frame.png")}[data-char="zither"]{--idle-art:url("assets/characters/idle/zither.png");--ready-art:url("assets/characters/ready/zither.png");--action-art:url("assets/characters/action/zither.png")}[data-char="painter"]{--idle-art:url("assets/characters/idle/painter.png");--ready-art:url("assets/characters/ready/painter.png");--action-art:url("assets/characters/action/painter.png")}[data-char="mechanist"]{--idle-art:url("assets/characters/idle/mechanist.png");--ready-art:url("assets/characters/ready/mechanist.png");--action-art:url("assets/characters/action/mechanist.png")}[data-char="merchant"]{--idle-art:url("assets/characters/idle/merchant.png");--ready-art:url("assets/characters/ready/merchant.png");--action-art:url("assets/characters/action/merchant.png")}
-[data-pose="0"]{--active-art:var(--idle-art)}[data-pose="1"]{--active-art:var(--ready-art)}[data-pose="2"]{--active-art:var(--action-art)}
-.char-card[data-char] .cg-art::before,.poster[data-char] .poster-art::before,.variant-stage[data-char] .vs-art::before,.second-card[data-char] .second-art::before{content:"";position:absolute;inset:0;z-index:2;background-image:linear-gradient(180deg,transparent 60%,rgba(9,7,15,.42)),var(--active-art);background-size:cover;background-position:center center;background-repeat:no-repeat;filter:saturate(1.08) contrast(1.04);transition:background-image .1s,filter .4s;animation:animeImageLife 4.8s ease-in-out infinite}
 .char-card[data-char] .cg-art svg,.poster[data-char] .art-svg,.variant-stage[data-char] .vs-art svg,.second-card[data-char] .second-art svg{display:none}
 @keyframes animeImageLife{0%,100%{translate:0 0;filter:saturate(1.05) contrast(1.03)}48%{translate:0 -4px;filter:saturate(1.14) contrast(1.06)}52%{translate:0 -4px;filter:saturate(1.14) brightness(1.08)}75%{translate:0 -1px;filter:saturate(1.06) contrast(1.04)}}@keyframes animeAura{0%,100%{opacity:.32;scale:.98}50%{opacity:.74;scale:1.05}}@keyframes animeSheen{0%,42%{transform:translateX(-120%) skewX(-14deg);opacity:0}56%{opacity:.7}76%,100%{transform:translateX(145%) skewX(-14deg);opacity:0}}
 .char-card[data-char] .cg-ring{animation:animeAura 4.2s ease-in-out infinite}.char-card[data-char] .cg-art::after,.poster[data-char] .poster-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse 8% 2.3% at 47% 22%,var(--el-2) 0 25%,transparent 60%),radial-gradient(ellipse 8% 2.3% at 53% 22%,var(--el-2) 0 25%,transparent 60%),linear-gradient(112deg,transparent 38%,rgba(255,255,255,.26) 49%,transparent 60%);mix-blend-mode:screen;animation:animeSheen 7s ease-in-out infinite}
 
-/* The actual frame is an independent image file, so gallery tiles never reveal a neighboring character. */
-.char-card[data-char] .cg-art::before,.poster[data-char] .poster-art::before,.variant-stage[data-char] .vs-art::before,.second-card[data-char] .second-art::before{content:none}
-.anime-frame{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:contain;object-position:center center;display:block;filter:saturate(1.08) contrast(1.04);animation:animeImageLife 4.8s ease-in-out infinite;transition:opacity .2s,filter .35s}
+/* Independent character files prevent any neighboring-sheet artwork from appearing. */
+.anime-frame{position:absolute;inset:0;z-index:2;width:100%;height:100%;display:block;overflow:hidden;object-fit:cover;object-position:50% 58%;background:#0f0d16;filter:saturate(1.08) contrast(1.04);animation:animeImageLife 4.8s ease-in-out infinite;transition:opacity .2s,filter .35s}
 .gallery-item:nth-child(3n+2) .anime-frame{animation-delay:-1.6s}.gallery-item:nth-child(3n) .anime-frame{animation-delay:-3.1s}.hero-card.c2 .anime-frame{animation-delay:-1.4s}.hero-card.c3 .anime-frame{animation-delay:-3s}
 .pose-shift .anime-frame{filter:saturate(1.24) brightness(1.15) drop-shadow(0 0 16px var(--el))}
+.char-card .cg-variants span.is-active{border-color:color-mix(in srgb,var(--el) 72%,transparent);background:color-mix(in srgb,var(--el) 18%,rgba(11,10,18,.74));color:var(--el-2);box-shadow:0 0 14px color-mix(in srgb,var(--el) 24%,transparent)}
 
 /* ---------- share poster modal ---------- */
 .share-modal[hidden]{display:none!important}
@@ -835,9 +828,9 @@ body.share-open{overflow:hidden}
           <div class="hero-orbit"></div>
           <div class="hero-rune r1">十二刻度 · 六十相</div>
           <div class="hero-rune r2">以行观心 · 以相见道</div>
-          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch" data-pose="0"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><img class="anime-frame" src="assets/characters/idle/witch.png" alt=""><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
-          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword" data-pose="1"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><img class="anime-frame" src="assets/characters/ready/sword.png" alt=""><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
-          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage" data-pose="2"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><img class="anime-frame" src="assets/characters/action/mage.png" alt=""><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
+          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch" data-pose="0"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><img class="anime-frame" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
+          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword" data-pose="1"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><img class="anime-frame" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
+          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage" data-pose="2"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><img class="anime-frame" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
         </div>
       </div>
     </div>
@@ -972,7 +965,7 @@ body.share-open{overflow:hidden}
             <div class="art-ring r1"></div><div class="art-ring r2"></div>
             <span class="art-rune left">本命道途 · 以行观心</span>
             <span class="art-rune right">十二刻度 · 三相显化</span>
-            <img class="anime-frame" id="resArtFrame" src="assets/characters/idle/sword.png" alt="">
+            <img class="anime-frame" id="resArtFrame" alt="" aria-hidden="true" decoding="async">
             <svg class="art-svg" viewBox="0 0 600 820" aria-hidden="true"><use id="resArtUse" href="#ch-sword"></use></svg>
             <div class="art-variant"><span>本相显化</span><b id="resVariantName">雷剑修</b></div>
             <div class="art-caption"><b id="resRole">专精 / 尖刀</b><span id="resClassEn">SWORD CULTIVATOR</span></div>
@@ -1050,7 +1043,7 @@ body.share-open{overflow:hidden}
             <div class="vs-glyph" id="vsGlyph">雷</div>
             <div class="vs-halo"></div><div class="vs-ring"></div>
             <span class="vs-tag" id="vsTag">ELEMENT · THUNDER</span>
-            <img class="anime-frame" id="vsArtFrame" src="assets/characters/idle/sword.png" alt="">
+            <img class="anime-frame" id="vsArtFrame" alt="" aria-hidden="true" decoding="async">
             <svg viewBox="0 0 600 820" aria-hidden="true"><use id="vsArtUse" href="#ch-sword"></use></svg>
           </div>
           <div class="vs-copy">
@@ -1069,7 +1062,7 @@ body.share-open{overflow:hidden}
           <p>当本命道途走不通时，你往往会退回到这里。</p>
         </div>
         <div class="second-card" id="secondCard" data-el="ice">
-          <div class="second-art"><div class="sa-glyph" id="secondGlyph">法</div><img class="anime-frame" id="secondArtFrame" src="assets/characters/idle/mage.png" alt=""><svg viewBox="0 0 600 820" aria-hidden="true"><use id="secondArtUse" href="#ch-mage"></use></svg></div>
+          <div class="second-art"><div class="sa-glyph" id="secondGlyph">法</div><img class="anime-frame" id="secondArtFrame" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820" aria-hidden="true"><use id="secondArtUse" href="#ch-mage"></use></svg></div>
           <div class="second-copy">
             <span class="k">SECOND DESTINY</span>
             <h3 id="secondName">霜语法师 <span id="secondEn">ICE MAGE</span></h3>
@@ -3104,14 +3097,22 @@ SPRITE_PARTS.push(`
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const artFramePath = (id, pose = 0) => {
-    const phase = ['idle', 'ready', 'action'][Number(pose)] || 'idle';
+    const phase = Math.max(0, Math.min(2, Number(pose) || 0));
     const file = id === 'puppeteer' ? 'puppeteer-frame' : id;
-    return `assets/characters/${phase}/${file}.png`;
+    return `assets/characters/variant-${phase}/${file}.jpg`;
   };
   const setAnimeFrame = (frame, id, pose = 0) => {
     if (!frame || !id) return;
-    frame.src = artFramePath(id, pose);
+    const src = artFramePath(id, pose);
+    if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
     frame.dataset.pose = String(pose);
+  };
+  const hydrateAnimeFrames = (root = document) => {
+    $$('.anime-frame', root).forEach(frame => {
+      const host = frame.closest('[data-char]');
+      const poseHost = frame.closest('[data-pose]') || host;
+      if (host) setAnimeFrame(frame, host.dataset.char, Number(poseHost?.dataset.pose || 0));
+    });
   };
   const screens = $$('.screen');
   const body = document.body;
@@ -3198,13 +3199,13 @@ SPRITE_PARTS.push(`
       const pills = keys.map(k => `${ELEMENTS[k].n} ${c.variants[k].name.replace(c.name, '') || c.variants[k].name}`).join('');
       return `
         <div class="gallery-item" data-group="${group}">
-          <button class="char-card pose-card" type="button" data-el="${mainKey}" data-char="${c.id}" aria-label="${c.name}，点击切换动作姿势">
+          <button class="char-card pose-card" type="button" data-el="${mainKey}" data-char="${c.id}" data-pose="0" data-variant-key="${mainKey}" aria-label="${c.variants[mainKey].name}，点击切换元素动作">
             <div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div>
             <div class="cg-label"><i></i>${group === 'west' ? '西境' : '东洲'} · ${mainEl.n}相</div>
             <div class="cg-role">${c.role.split(' / ')[0]}</div>
-            <div class="cg-art"><img class="anime-frame" src="assets/characters/idle/${c.id === 'puppeteer' ? 'puppeteer-frame' : c.id}.png" alt=""><svg viewBox="0 0 600 820" aria-hidden="true"><use href="#ch-${c.id}"></use></svg></div>
-            <div class="cg-variants">${keys.map(k => `<span>${ELEMENTS[k].n} · ${c.variants[k].name}</span>`).join('')}</div>
-            <div class="cg-name"><b>${c.name}</b><span>${c.en}</span></div>
+            <div class="cg-art"><img class="anime-frame" alt="" aria-hidden="true" decoding="async" loading="lazy"><svg viewBox="0 0 600 820" aria-hidden="true"><use href="#ch-${c.id}"></use></svg></div>
+            <div class="cg-variants">${keys.map(k => `<span data-variant-key="${k}"${k === mainKey ? ' class="is-active"' : ''}>${ELEMENTS[k].n} · ${c.variants[k].name}</span>`).join('')}</div>
+            <div class="cg-name"><b>${c.variants[mainKey].name}</b><span>${mainEl.en} ${c.en}</span></div>
           </button>
           <p class="gallery-note">${c.gallery}</p>
         </div>`;
@@ -3213,23 +3214,51 @@ SPRITE_PARTS.push(`
     $$('.gallery-item', grid).forEach((el, i) => {
       el.style.animation = `rise .5s ${Math.min(i * 0.035, 0.4)}s both`;
     });
+    hydrateAnimeFrames(grid);
     $$('.pose-card', grid).forEach(card => card.addEventListener('click', () => cyclePose(card)));
   }
 
+  function setCardVariantMeta(card, character, pose) {
+    const keys = Object.keys(character.variants);
+    const key = keys[pose] || keys[0];
+    const element = ELEMENTS[key];
+    const variant = character.variants[key];
+    const galleryGroup = card.closest('.gallery-item')?.dataset.group;
+    const realm = galleryGroup ? `${galleryGroup === 'west' ? '西境' : '东洲'} · ` : '';
+    card.dataset.el = key;
+    card.dataset.variantKey = key;
+    const label = $('.cg-label', card);
+    if (label) label.innerHTML = `<i></i>${realm}${element.n}相 · ${variant.name}`;
+    const name = $('.cg-name b', card);
+    const subname = $('.cg-name span', card);
+    if (name) name.textContent = variant.name;
+    if (subname) subname.textContent = `${element.en} ${character.en}`;
+    $$('.cg-variants [data-variant-key]', card).forEach(chip => {
+      chip.classList.toggle('is-active', chip.dataset.variantKey === key);
+    });
+    return { key, element, variant };
+  }
+
   function cyclePose(target) {
-    const next = ((Number(target.dataset.pose || 0) + 1) % 3);
+    const characterHost = target.closest('[data-char]') || target;
+    const character = CLASS_BY_ID[characterHost.dataset.char];
+    const phaseCount = character ? Object.keys(character.variants).length : 3;
+    const next = ((Number(target.dataset.pose || 0) + 1) % phaseCount);
     target.dataset.pose = String(next);
     target.classList.remove('pose-1', 'pose-2', 'pose-shift');
     if (next) target.classList.add(`pose-${next}`);
-    const characterHost = target.closest('[data-char]') || target;
+    const branch = target.classList.contains('char-card') && character
+      ? setCardVariantMeta(target, character, next)
+      : null;
     setAnimeFrame($('.anime-frame', target) || $('.anime-frame', characterHost), characterHost.dataset.char, next);
     void target.offsetWidth;
     target.classList.add('pose-shift');
-    const label = next === 0 ? '常驻姿势' : next === 1 ? '蓄势姿势' : '出招姿势';
-    target.setAttribute('aria-label', `${target.getAttribute('aria-label')?.split('，')[0] || '角色'}，当前${label}，点击切换动作姿势`);
+    const poseLabel = next === 0 ? '常驻姿势' : next === 1 ? '蓄势姿势' : '出招姿势';
+    const ariaName = branch?.variant.name || target.getAttribute('aria-label')?.split('，')[0] || '角色';
+    target.setAttribute('aria-label', `${ariaName}，当前${poseLabel}，点击切换元素动作`);
     if (target.classList.contains('poster-art')) {
       const caption = $('#poseControl span');
-      if (caption) caption.textContent = label;
+      if (caption) caption.textContent = poseLabel;
     }
     setTimeout(() => target.classList.remove('pose-shift'), 600);
   }
@@ -4107,6 +4136,7 @@ SPRITE_PARTS.push(`
   function init() {
     renderDims();
     initGallery();
+    hydrateAnimeFrames();
     initEvents();
     initArtMotes();
     initPosterParallax();
