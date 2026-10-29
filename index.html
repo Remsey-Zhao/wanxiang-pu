@@ -710,19 +710,23 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
   .char-card.pose-card::after,.hero-card .char-card::after{opacity:1;transform:none;font-size:6.5px;right:7px;bottom:7px}
 }
 
-/* ---------- Japanese anime key visuals: the generated art is the only character layer ---------- */
-[data-char]{--anime-x:0%;--anime-y:0%}
-[data-char="warrior"]{--anime-x:0%;--anime-y:0%}[data-char="mage"]{--anime-x:25%;--anime-y:0%}[data-char="witch"]{--anime-x:50%;--anime-y:0%}[data-char="elf"]{--anime-x:75%;--anime-y:0%}[data-char="rogue"]{--anime-x:100%;--anime-y:0%}
-[data-char="paladin"]{--anime-x:0%;--anime-y:33.333%}[data-char="druid"]{--anime-x:25%;--anime-y:33.333%}[data-char="bard"]{--anime-x:50%;--anime-y:33.333%}[data-char="ranger"]{--anime-x:75%;--anime-y:33.333%}[data-char="necromancer"]{--anime-x:100%;--anime-y:33.333%}
-[data-char="sword"]{--anime-x:0%;--anime-y:66.666%}[data-char="boxer"]{--anime-x:25%;--anime-y:66.666%}[data-char="talisman"]{--anime-x:50%;--anime-y:66.666%}[data-char="alchemist"]{--anime-x:75%;--anime-y:66.666%}[data-char="tamer"]{--anime-x:100%;--anime-y:66.666%}
-[data-char="puppeteer"]{--anime-x:0%;--anime-y:100%}[data-char="zither"]{--anime-x:25%;--anime-y:100%}[data-char="painter"]{--anime-x:50%;--anime-y:100%}[data-char="mechanist"]{--anime-x:75%;--anime-y:100%}[data-char="merchant"]{--anime-x:100%;--anime-y:100%}
-.char-card[data-char] .cg-art::before,.poster[data-char] .poster-art::before,.variant-stage[data-char] .vs-art::before,.second-card[data-char] .second-art::before{content:"";position:absolute;inset:0;z-index:2;background-image:linear-gradient(180deg,transparent 60%,rgba(9,7,15,.42)),url("assets/anime-character-atlas-v1.png");background-size:auto 400%;background-position:var(--anime-x) var(--anime-y);background-repeat:no-repeat;filter:saturate(1.1) contrast(1.04);transform:scale(1.035);transition:transform .6s cubic-bezier(.2,.85,.2,1),filter .4s}
+/* ---------- independent Japanese anime motion frames ---------- */
+[data-char]{--active-art:var(--idle-art)}
+[data-char="warrior"]{--idle-art:url("assets/characters/idle/warrior.png");--ready-art:url("assets/characters/ready/warrior.png");--action-art:url("assets/characters/action/warrior.png")}[data-char="mage"]{--idle-art:url("assets/characters/idle/mage.png");--ready-art:url("assets/characters/ready/mage.png");--action-art:url("assets/characters/action/mage.png")}[data-char="witch"]{--idle-art:url("assets/characters/idle/witch.png");--ready-art:url("assets/characters/ready/witch.png");--action-art:url("assets/characters/action/witch.png")}[data-char="elf"]{--idle-art:url("assets/characters/idle/elf.png");--ready-art:url("assets/characters/ready/elf.png");--action-art:url("assets/characters/action/elf.png")}[data-char="rogue"]{--idle-art:url("assets/characters/idle/rogue.png");--ready-art:url("assets/characters/ready/rogue.png");--action-art:url("assets/characters/action/rogue.png")}
+[data-char="paladin"]{--idle-art:url("assets/characters/idle/paladin.png");--ready-art:url("assets/characters/ready/paladin.png");--action-art:url("assets/characters/action/paladin.png")}[data-char="druid"]{--idle-art:url("assets/characters/idle/druid.png");--ready-art:url("assets/characters/ready/druid.png");--action-art:url("assets/characters/action/druid.png")}[data-char="bard"]{--idle-art:url("assets/characters/idle/bard.png");--ready-art:url("assets/characters/ready/bard.png");--action-art:url("assets/characters/action/bard.png")}[data-char="ranger"]{--idle-art:url("assets/characters/idle/ranger.png");--ready-art:url("assets/characters/ready/ranger.png");--action-art:url("assets/characters/action/ranger.png")}[data-char="necromancer"]{--idle-art:url("assets/characters/idle/necromancer.png");--ready-art:url("assets/characters/ready/necromancer.png");--action-art:url("assets/characters/action/necromancer.png")}
+[data-char="sword"]{--idle-art:url("assets/characters/idle/sword.png");--ready-art:url("assets/characters/ready/sword.png");--action-art:url("assets/characters/action/sword.png")}[data-char="boxer"]{--idle-art:url("assets/characters/idle/boxer.png");--ready-art:url("assets/characters/ready/boxer.png");--action-art:url("assets/characters/action/boxer.png")}[data-char="talisman"]{--idle-art:url("assets/characters/idle/talisman.png");--ready-art:url("assets/characters/ready/talisman.png");--action-art:url("assets/characters/action/talisman.png")}[data-char="alchemist"]{--idle-art:url("assets/characters/idle/alchemist.png");--ready-art:url("assets/characters/ready/alchemist.png");--action-art:url("assets/characters/action/alchemist.png")}[data-char="tamer"]{--idle-art:url("assets/characters/idle/tamer.png");--ready-art:url("assets/characters/ready/tamer.png");--action-art:url("assets/characters/action/tamer.png")}
+[data-char="puppeteer"]{--idle-art:url("assets/characters/idle/puppeteer-frame.png");--ready-art:url("assets/characters/ready/puppeteer-frame.png");--action-art:url("assets/characters/action/puppeteer-frame.png")}[data-char="zither"]{--idle-art:url("assets/characters/idle/zither.png");--ready-art:url("assets/characters/ready/zither.png");--action-art:url("assets/characters/action/zither.png")}[data-char="painter"]{--idle-art:url("assets/characters/idle/painter.png");--ready-art:url("assets/characters/ready/painter.png");--action-art:url("assets/characters/action/painter.png")}[data-char="mechanist"]{--idle-art:url("assets/characters/idle/mechanist.png");--ready-art:url("assets/characters/ready/mechanist.png");--action-art:url("assets/characters/action/mechanist.png")}[data-char="merchant"]{--idle-art:url("assets/characters/idle/merchant.png");--ready-art:url("assets/characters/ready/merchant.png");--action-art:url("assets/characters/action/merchant.png")}
+[data-pose="0"]{--active-art:var(--idle-art)}[data-pose="1"]{--active-art:var(--ready-art)}[data-pose="2"]{--active-art:var(--action-art)}
+.char-card[data-char] .cg-art::before,.poster[data-char] .poster-art::before,.variant-stage[data-char] .vs-art::before,.second-card[data-char] .second-art::before{content:"";position:absolute;inset:0;z-index:2;background-image:linear-gradient(180deg,transparent 60%,rgba(9,7,15,.42)),var(--active-art);background-size:cover;background-position:center center;background-repeat:no-repeat;filter:saturate(1.08) contrast(1.04);transition:background-image .1s,filter .4s;animation:animeImageLife 4.8s ease-in-out infinite}
 .char-card[data-char] .cg-art svg,.poster[data-char] .art-svg,.variant-stage[data-char] .vs-art svg,.second-card[data-char] .second-art svg{display:none}
-.char-card[data-char].pose-1 .cg-art::before{transform:translate3d(-3%,1%,0) scale(1.09) rotate(-1.4deg)}.char-card[data-char].pose-2 .cg-art::before{transform:translate3d(3%,-1%,0) scale(1.075) rotate(1.4deg)}
-.poster[data-char] .poster-art.pose-1::before{transform:translate3d(-3%,1%,0) scale(1.08) rotate(-1.2deg)}.poster[data-char] .poster-art.pose-2::before{transform:translate3d(3%,-1%,0) scale(1.065) rotate(1.2deg)}
-@keyframes animeIdle{0%,100%{translate:0 0}50%{translate:0 -5px}}@keyframes animeAura{0%,100%{opacity:.34;scale:.98}50%{opacity:.72;scale:1.04}}@keyframes animeSheen{0%,42%{transform:translateX(-120%) skewX(-14deg);opacity:0}56%{opacity:.7}76%,100%{transform:translateX(145%) skewX(-14deg);opacity:0}}
-.char-card[data-char] .cg-art{animation:animeIdle 4.8s ease-in-out infinite}.gallery-item:nth-child(3n+2) .cg-art{animation-delay:-1.6s}.gallery-item:nth-child(3n) .cg-art{animation-delay:-3.1s}.hero-card.c2 .cg-art{animation-delay:-1.4s}.hero-card.c3 .cg-art{animation-delay:-3s}
-.char-card[data-char] .cg-ring{animation:animeAura 4.2s ease-in-out infinite}.char-card[data-char] .cg-art::after,.poster[data-char] .poster-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(112deg,transparent 38%,rgba(255,255,255,.32) 49%,transparent 60%);mix-blend-mode:screen;animation:animeSheen 7s ease-in-out infinite}
+@keyframes animeImageLife{0%,100%{translate:0 0;filter:saturate(1.05) contrast(1.03)}48%{translate:0 -4px;filter:saturate(1.14) contrast(1.06)}52%{translate:0 -4px;filter:saturate(1.14) brightness(1.08)}75%{translate:0 -1px;filter:saturate(1.06) contrast(1.04)}}@keyframes animeAura{0%,100%{opacity:.32;scale:.98}50%{opacity:.74;scale:1.05}}@keyframes animeSheen{0%,42%{transform:translateX(-120%) skewX(-14deg);opacity:0}56%{opacity:.7}76%,100%{transform:translateX(145%) skewX(-14deg);opacity:0}}
+.char-card[data-char] .cg-ring{animation:animeAura 4.2s ease-in-out infinite}.char-card[data-char] .cg-art::after,.poster[data-char] .poster-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse 8% 2.3% at 47% 22%,var(--el-2) 0 25%,transparent 60%),radial-gradient(ellipse 8% 2.3% at 53% 22%,var(--el-2) 0 25%,transparent 60%),linear-gradient(112deg,transparent 38%,rgba(255,255,255,.26) 49%,transparent 60%);mix-blend-mode:screen;animation:animeSheen 7s ease-in-out infinite}
+
+/* The actual frame is an independent image file, so gallery tiles never reveal a neighboring character. */
+.char-card[data-char] .cg-art::before,.poster[data-char] .poster-art::before,.variant-stage[data-char] .vs-art::before,.second-card[data-char] .second-art::before{content:none}
+.anime-frame{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:contain;object-position:center center;display:block;filter:saturate(1.08) contrast(1.04);animation:animeImageLife 4.8s ease-in-out infinite;transition:opacity .2s,filter .35s}
+.gallery-item:nth-child(3n+2) .anime-frame{animation-delay:-1.6s}.gallery-item:nth-child(3n) .anime-frame{animation-delay:-3.1s}.hero-card.c2 .anime-frame{animation-delay:-1.4s}.hero-card.c3 .anime-frame{animation-delay:-3s}
+.pose-shift .anime-frame{filter:saturate(1.24) brightness(1.15) drop-shadow(0 0 16px var(--el))}
 
 /* ---------- share poster modal ---------- */
 .share-modal[hidden]{display:none!important}
@@ -831,9 +835,9 @@ body.share-open{overflow:hidden}
           <div class="hero-orbit"></div>
           <div class="hero-rune r1">十二刻度 · 六十相</div>
           <div class="hero-rune r2">以行观心 · 以相见道</div>
-          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
-          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
-          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
+          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch" data-pose="0"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><img class="anime-frame" src="assets/characters/idle/witch.png" alt=""><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
+          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword" data-pose="1"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><img class="anime-frame" src="assets/characters/ready/sword.png" alt=""><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
+          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage" data-pose="2"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><img class="anime-frame" src="assets/characters/action/mage.png" alt=""><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
         </div>
       </div>
     </div>
@@ -968,6 +972,7 @@ body.share-open{overflow:hidden}
             <div class="art-ring r1"></div><div class="art-ring r2"></div>
             <span class="art-rune left">本命道途 · 以行观心</span>
             <span class="art-rune right">十二刻度 · 三相显化</span>
+            <img class="anime-frame" id="resArtFrame" src="assets/characters/idle/sword.png" alt="">
             <svg class="art-svg" viewBox="0 0 600 820" aria-hidden="true"><use id="resArtUse" href="#ch-sword"></use></svg>
             <div class="art-variant"><span>本相显化</span><b id="resVariantName">雷剑修</b></div>
             <div class="art-caption"><b id="resRole">专精 / 尖刀</b><span id="resClassEn">SWORD CULTIVATOR</span></div>
@@ -1045,6 +1050,7 @@ body.share-open{overflow:hidden}
             <div class="vs-glyph" id="vsGlyph">雷</div>
             <div class="vs-halo"></div><div class="vs-ring"></div>
             <span class="vs-tag" id="vsTag">ELEMENT · THUNDER</span>
+            <img class="anime-frame" id="vsArtFrame" src="assets/characters/idle/sword.png" alt="">
             <svg viewBox="0 0 600 820" aria-hidden="true"><use id="vsArtUse" href="#ch-sword"></use></svg>
           </div>
           <div class="vs-copy">
@@ -1063,7 +1069,7 @@ body.share-open{overflow:hidden}
           <p>当本命道途走不通时，你往往会退回到这里。</p>
         </div>
         <div class="second-card" id="secondCard" data-el="ice">
-          <div class="second-art"><div class="sa-glyph" id="secondGlyph">法</div><svg viewBox="0 0 600 820" aria-hidden="true"><use id="secondArtUse" href="#ch-mage"></use></svg></div>
+          <div class="second-art"><div class="sa-glyph" id="secondGlyph">法</div><img class="anime-frame" id="secondArtFrame" src="assets/characters/idle/mage.png" alt=""><svg viewBox="0 0 600 820" aria-hidden="true"><use id="secondArtUse" href="#ch-mage"></use></svg></div>
           <div class="second-copy">
             <span class="k">SECOND DESTINY</span>
             <h3 id="secondName">霜语法师 <span id="secondEn">ICE MAGE</span></h3>
@@ -3097,6 +3103,16 @@ SPRITE_PARTS.push(`
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const artFramePath = (id, pose = 0) => {
+    const phase = ['idle', 'ready', 'action'][Number(pose)] || 'idle';
+    const file = id === 'puppeteer' ? 'puppeteer-frame' : id;
+    return `assets/characters/${phase}/${file}.png`;
+  };
+  const setAnimeFrame = (frame, id, pose = 0) => {
+    if (!frame || !id) return;
+    frame.src = artFramePath(id, pose);
+    frame.dataset.pose = String(pose);
+  };
   const screens = $$('.screen');
   const body = document.body;
 
@@ -3186,7 +3202,7 @@ SPRITE_PARTS.push(`
             <div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div>
             <div class="cg-label"><i></i>${group === 'west' ? '西境' : '东洲'} · ${mainEl.n}相</div>
             <div class="cg-role">${c.role.split(' / ')[0]}</div>
-            <div class="cg-art"><svg viewBox="0 0 600 820" aria-hidden="true"><use href="#ch-${c.id}"></use></svg></div>
+            <div class="cg-art"><img class="anime-frame" src="assets/characters/idle/${c.id === 'puppeteer' ? 'puppeteer-frame' : c.id}.png" alt=""><svg viewBox="0 0 600 820" aria-hidden="true"><use href="#ch-${c.id}"></use></svg></div>
             <div class="cg-variants">${keys.map(k => `<span>${ELEMENTS[k].n} · ${c.variants[k].name}</span>`).join('')}</div>
             <div class="cg-name"><b>${c.name}</b><span>${c.en}</span></div>
           </button>
@@ -3205,10 +3221,16 @@ SPRITE_PARTS.push(`
     target.dataset.pose = String(next);
     target.classList.remove('pose-1', 'pose-2', 'pose-shift');
     if (next) target.classList.add(`pose-${next}`);
+    const characterHost = target.closest('[data-char]') || target;
+    setAnimeFrame($('.anime-frame', target) || $('.anime-frame', characterHost), characterHost.dataset.char, next);
     void target.offsetWidth;
     target.classList.add('pose-shift');
     const label = next === 0 ? '常驻姿势' : next === 1 ? '蓄势姿势' : '出招姿势';
     target.setAttribute('aria-label', `${target.getAttribute('aria-label')?.split('，')[0] || '角色'}，当前${label}，点击切换动作姿势`);
+    if (target.classList.contains('poster-art')) {
+      const caption = $('#poseControl span');
+      if (caption) caption.textContent = label;
+    }
     setTimeout(() => target.classList.remove('pose-shift'), 600);
   }
 
@@ -3421,6 +3443,11 @@ SPRITE_PARTS.push(`
     $('#poster').dataset.char = c.id;
     $('#variantStage').dataset.el = v.key;
     $('#variantStage').dataset.char = c.id;
+    $('.poster-art').dataset.pose = String(Object.keys(c.variants).indexOf(v.key));
+    const initialPose = ['常驻姿势', '蓄势姿势', '出招姿势'][Number($('.poster-art').dataset.pose)] || '常驻姿势';
+    setAnimeFrame($('#resArtFrame'), c.id, Number($('.poster-art').dataset.pose));
+    const poseCaption = $('#poseControl span');
+    if (poseCaption) poseCaption.textContent = initialPose;
 
     // poster identity
     $('#resNo').textContent = `NO. ${String(roleIndex).padStart(2, '0')}`;
@@ -3476,6 +3503,8 @@ SPRITE_PARTS.push(`
     const sel = sv.el;
     $('#secondCard').dataset.el = sv.key;
     $('#secondCard').dataset.char = sc.id;
+    $('#secondCard').dataset.pose = String(Object.keys(sc.variants).indexOf(sv.key));
+    setAnimeFrame($('#secondArtFrame'), sc.id, Number($('#secondCard').dataset.pose));
     $('#secondGlyph').textContent = CLASS_GLYPHS[sc.id] || sc.name[0];
     $('#secondArtUse').setAttribute('href', `#ch-${sc.id}`);
     $('#secondName').innerHTML = `${sv.data.name} <span>${sel.en} ${sc.en}</span>`;
@@ -3517,6 +3546,8 @@ SPRITE_PARTS.push(`
     const vd = c.variants[key];
     $('#variantStage').dataset.el = key;
     $('#variantStage').dataset.char = c.id;
+    $('#variantStage').dataset.pose = String(Object.keys(c.variants).indexOf(key));
+    setAnimeFrame($('#vsArtFrame'), c.id, Number($('#variantStage').dataset.pose));
     $('#vsGlyph').textContent = e.n;
     $('#vsTag').textContent = `ELEMENT · ${e.en}`;
     $('#vsName').textContent = vd.name;
@@ -3663,6 +3694,8 @@ SPRITE_PARTS.push(`
     const summary = wrapCJK(c.summary, 27, 4);
     const glyph = CLASS_GLYPHS[c.id] || c.name[0];
     const keys = Object.keys(c.variants);
+    const pose = Object.keys(c.variants).indexOf(v.key);
+    const artURL = new URL(artFramePath(c.id, pose), location.href).href;
     const parse = s => `font-family="Songti SC,Noto Serif SC,Source Han Serif SC,serif"`;
 
     let svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1440" viewBox="0 0 1080 1440">`;
@@ -3711,7 +3744,7 @@ SPRITE_PARTS.push(`
     svg += `<text x="1008" y="128" font-family="SFMono-Regular,Menlo,monospace" font-size="11" letter-spacing="3" fill="#8a8073" text-anchor="end">NO. ${no} / 60</text>`;
 
     // art
-    svg += `<g transform="translate(240 112)"><use href="#ch-${c.id}" xlink:href="#ch-${c.id}" width="600" height="820"/></g>`;
+    svg += `<image href="${esc(artURL)}" x="267" y="112" width="546" height="820" preserveAspectRatio="xMidYMid meet"/>`;
     svg += `<rect x="0" y="708" width="1080" height="522" fill="url(#wpFade)"/>`;
 
     // title block
