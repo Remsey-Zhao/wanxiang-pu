@@ -716,7 +716,7 @@ body[data-screen="quiz"] .site-head,body[data-screen="result"] .site-head{displa
 .char-card[data-char] .cg-ring{animation:animeAura 4.2s ease-in-out infinite}.char-card[data-char] .cg-art::after,.poster[data-char] .poster-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse 8% 2.3% at 47% 22%,var(--el-2) 0 25%,transparent 60%),radial-gradient(ellipse 8% 2.3% at 53% 22%,var(--el-2) 0 25%,transparent 60%),linear-gradient(112deg,transparent 38%,rgba(255,255,255,.26) 49%,transparent 60%);mix-blend-mode:screen;animation:animeSheen 7s ease-in-out infinite}
 
 /* Independent character files prevent any neighboring-sheet artwork from appearing. */
-.anime-frame{position:absolute;inset:0;z-index:2;width:100%;height:100%;display:block;overflow:hidden;object-fit:cover;object-position:50% 58%;background:#0f0d16;filter:saturate(1.08) contrast(1.04);animation:animeImageLife 4.8s ease-in-out infinite;transition:opacity .2s,filter .35s}
+.anime-frame{position:absolute;inset:0;z-index:2;width:100%;height:100%;display:block;overflow:hidden;object-fit:contain;object-position:50% 54%;background:#0f0d16;filter:saturate(1.08) contrast(1.04);animation:animeImageLife 4.8s ease-in-out infinite;transition:opacity .2s,filter .35s}
 .gallery-item:nth-child(3n+2) .anime-frame{animation-delay:-1.6s}.gallery-item:nth-child(3n) .anime-frame{animation-delay:-3.1s}.hero-card.c2 .anime-frame{animation-delay:-1.4s}.hero-card.c3 .anime-frame{animation-delay:-3s}
 .pose-shift .anime-frame{filter:saturate(1.24) brightness(1.15) drop-shadow(0 0 16px var(--el))}
 .char-card .cg-variants span.is-active{border-color:color-mix(in srgb,var(--el) 72%,transparent);background:color-mix(in srgb,var(--el) 18%,rgba(11,10,18,.74));color:var(--el-2);box-shadow:0 0 14px color-mix(in srgb,var(--el) 24%,transparent)}
@@ -828,9 +828,9 @@ body.share-open{overflow:hidden}
           <div class="hero-orbit"></div>
           <div class="hero-rune r1">十二刻度 · 六十相</div>
           <div class="hero-rune r2">以行观心 · 以相见道</div>
-          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch" data-pose="0"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><img class="anime-frame" src="assets/characters/variant-0/witch.jpg?v=elemental-v3" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
-          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword" data-pose="1"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><img class="anime-frame" src="assets/characters/variant-1/sword.jpg?v=elemental-v3" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
-          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage" data-pose="2"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><img class="anime-frame" src="assets/characters/variant-2/mage.jpg?v=elemental-v3" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
+          <div class="hero-card c2"><div class="char-card" data-el="moon" data-char="witch" data-pose="0"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>月蚀女巫</div><div class="cg-art"><img class="anime-frame" src="assets/characters/variant-0/witch.jpg?v=anime-hd-v2" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-witch"></use></svg></div><div class="cg-name"><b>月蚀女巫</b><span>MOON WITCH</span></div></div></div>
+          <div class="hero-card c1"><div class="char-card" data-el="thunder" data-char="sword" data-pose="1"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>雷剑修</div><div class="cg-art"><img class="anime-frame" src="assets/characters/variant-1/sword.jpg?v=anime-hd-v2" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-sword"></use></svg></div><div class="cg-name"><b>雷剑修</b><span>THUNDER SWORD</span></div></div></div>
+          <div class="hero-card c3"><div class="char-card" data-el="light" data-char="mage" data-pose="2"><div class="cg-bg"></div><div class="cg-ring"></div><div class="cg-stars"></div><div class="cg-label"><i></i>辉光法师</div><div class="cg-art"><img class="anime-frame" src="assets/characters/variant-2/mage.jpg?v=anime-hd-v2" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820"><use href="#ch-mage"></use></svg></div><div class="cg-name"><b>辉光法师</b><span>LIGHT MAGE</span></div></div></div>
         </div>
       </div>
     </div>
@@ -965,7 +965,7 @@ body.share-open{overflow:hidden}
             <div class="art-ring r1"></div><div class="art-ring r2"></div>
             <span class="art-rune left">本命道途 · 以行观心</span>
             <span class="art-rune right">十二刻度 · 三相显化</span>
-            <img class="anime-frame" id="resArtFrame" src="assets/characters/variant-0/sword.jpg?v=elemental-v3" alt="" aria-hidden="true" decoding="async">
+            <img class="anime-frame" id="resArtFrame" src="assets/characters/variant-0/sword.jpg?v=anime-hd-v2" alt="" aria-hidden="true" decoding="async">
             <svg class="art-svg" viewBox="0 0 600 820" aria-hidden="true"><use id="resArtUse" href="#ch-sword"></use></svg>
             <div class="art-variant"><span>本相显化</span><b id="resVariantName">雷剑修</b></div>
             <div class="art-caption"><b id="resRole">专精 / 尖刀</b><span id="resClassEn">SWORD CULTIVATOR</span></div>
@@ -1043,7 +1043,7 @@ body.share-open{overflow:hidden}
             <div class="vs-glyph" id="vsGlyph">雷</div>
             <div class="vs-halo"></div><div class="vs-ring"></div>
             <span class="vs-tag" id="vsTag">ELEMENT · THUNDER</span>
-            <img class="anime-frame" id="vsArtFrame" src="assets/characters/variant-0/sword.jpg?v=elemental-v3" alt="" aria-hidden="true" decoding="async">
+            <img class="anime-frame" id="vsArtFrame" src="assets/characters/variant-0/sword.jpg?v=anime-hd-v2" alt="" aria-hidden="true" decoding="async">
             <svg viewBox="0 0 600 820" aria-hidden="true"><use id="vsArtUse" href="#ch-sword"></use></svg>
           </div>
           <div class="vs-copy">
@@ -1062,7 +1062,7 @@ body.share-open{overflow:hidden}
           <p>当本命道途走不通时，你往往会退回到这里。</p>
         </div>
         <div class="second-card" id="secondCard" data-el="ice">
-          <div class="second-art"><div class="sa-glyph" id="secondGlyph">法</div><img class="anime-frame" id="secondArtFrame" src="assets/characters/variant-0/mage.jpg?v=elemental-v3" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820" aria-hidden="true"><use id="secondArtUse" href="#ch-mage"></use></svg></div>
+          <div class="second-art"><div class="sa-glyph" id="secondGlyph">法</div><img class="anime-frame" id="secondArtFrame" src="assets/characters/variant-0/mage.jpg?v=anime-hd-v2" alt="" aria-hidden="true" decoding="async"><svg viewBox="0 0 600 820" aria-hidden="true"><use id="secondArtUse" href="#ch-mage"></use></svg></div>
           <div class="second-copy">
             <span class="k">SECOND DESTINY</span>
             <h3 id="secondName">霜语法师 <span id="secondEn">ICE MAGE</span></h3>
@@ -3096,10 +3096,11 @@ SPRITE_PARTS.push(`
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const ART_ASSET_BASE = location.protocol === 'file:' ? 'https://remsey-zhao.github.io/wanxiang-pu/' : '';
   const artFramePath = (id, pose = 0) => {
     const phase = Math.max(0, Math.min(2, Number(pose) || 0));
     const file = id === 'puppeteer' ? 'puppeteer-frame' : id;
-    return `assets/characters/variant-${phase}/${file}.jpg?v=elemental-v3`;
+    return `${ART_ASSET_BASE}assets/characters/variant-${phase}/${file}.jpg?v=anime-hd-v2`;
   };
   const setAnimeFrame = (frame, id, pose = 0) => {
     if (!frame || !id) return;
@@ -3706,7 +3707,25 @@ SPRITE_PARTS.push(`
     return out;
   }
 
-  function posterSVG(r) {
+  const blobToDataURL = blob => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(reader.error || new Error('Image decode failed'));
+    reader.readAsDataURL(blob);
+  });
+
+  async function posterArtData(url) {
+    if (url.startsWith('data:')) return url;
+    try {
+      const response = await fetch(url, { cache: 'force-cache' });
+      if (!response.ok) throw new Error(`Image fetch failed: ${response.status}`);
+      return await blobToDataURL(await response.blob());
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function posterSVG(r) {
     const c = r.cls, v = r.variant, el = v.el, el3 = ELEMENT_DARK[v.key] || el.c;
     const roleIndex = r.clsIndex * 3 + Object.keys(c.variants).indexOf(v.key) + 1;
     const no = String(roleIndex).padStart(2, '0');
@@ -3725,6 +3744,7 @@ SPRITE_PARTS.push(`
     const keys = Object.keys(c.variants);
     const pose = Object.keys(c.variants).indexOf(v.key);
     const artURL = new URL(artFramePath(c.id, pose), location.href).href;
+    const artData = await posterArtData(artURL);
     const parse = s => `font-family="Songti SC,Noto Serif SC,Source Han Serif SC,serif"`;
 
     let svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1440" viewBox="0 0 1080 1440">`;
@@ -3772,8 +3792,10 @@ SPRITE_PARTS.push(`
     svg += `<text x="110" y="128" font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" letter-spacing="2" fill="${el.c2}">${esc(el.n)}相 · ${esc(el.en)}</text>`;
     svg += `<text x="1008" y="128" font-family="SFMono-Regular,Menlo,monospace" font-size="11" letter-spacing="3" fill="#8a8073" text-anchor="end">NO. ${no} / 60</text>`;
 
-    // art
-    svg += `<image href="${esc(artURL)}" x="267" y="112" width="546" height="820" preserveAspectRatio="xMidYMid meet"/>`;
+    // art: inline the raster before canvas export; file:// and Blob SVG otherwise lose external images.
+    svg += artData
+      ? `<image href="${esc(artData)}" xlink:href="${esc(artData)}" x="267" y="112" width="546" height="820" preserveAspectRatio="xMidYMid meet"/>`
+      : `<use href="#ch-${c.id}" xlink:href="#ch-${c.id}" x="267" y="112" width="546" height="820"/>`;
     svg += `<rect x="0" y="708" width="1080" height="522" fill="url(#wpFade)"/>`;
 
     // title block
@@ -3873,10 +3895,10 @@ SPRITE_PARTS.push(`
     dl.disabled = true;
     dl.innerHTML = '正在生成高清海报…';
     preview.innerHTML = '<div class="share-loading"><i></i><span>正在绘制你的命盘…</span></div>';
-    const svg = posterSVG(currentResult);
+    const svg = await posterSVG(currentResult);
     shareState.svg = svg;
     try {
-      const blob = await svgToPng(svg, 2);
+      const blob = await svgToPng(svg, 3);
       shareState.blob = blob;
       shareState.kind = 'png';
       shareState.url = URL.createObjectURL(blob);
